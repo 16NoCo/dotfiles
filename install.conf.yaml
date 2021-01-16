@@ -1,0 +1,25 @@
+- default:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.bash:
+    ~/.bin:
+    ~/.fonts:
+    ~/.vim:
+    ~/.config/:
+        glob: true
+        path: config/*
+    ~/.local/share/:
+        glob: true
+        path: local/share/*
+    ~/.bashrc:
+    ~/.gitconfig:
+    ~/.lesskey:
+    ~/.profile:
+    ~/.vimrc:
+    ~/.vimrc_bepo:
+    ~/.zshrc:

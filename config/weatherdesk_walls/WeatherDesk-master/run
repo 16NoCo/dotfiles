@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#/home/noe/.weatherdesk_walls/WeatherDesk-master/camera_modifier.sh &
+path='/home/noe/.config/weatherdesk_walls'
+$path/WeatherDesk-master/WeatherDesk.py -ot4 --no-weather
+
+while ( true )
+do
+	$path/WeatherDesk-master/WeatherDesk.py -t 4 -o -c Vedrin
+	sleep 60
+done

@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Clipboard
+Exec=/usr/bin/gnome-pie -o 553
+Encoding=UTF-8
+Type=Application
+Icon=com.github.davidmhewitt.clipped
+StartupWMClass=gnome-pie-553

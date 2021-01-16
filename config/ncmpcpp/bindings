@@ -1,0 +1,57 @@
+def_key "t"
+    scroll_down
+def_key "s"
+    scroll_up
+
+def_key "Q"
+    stop
+def_key "O"
+    toggle_playing_song_centering
+
+def_key "c"
+    previous_column
+def_key "c"
+    jump_to_parent_directory
+def_key "r"
+    next_column
+def_key "r"
+    enter_directory
+def_key "r"
+    run_action
+def_key "r"
+    play_item
+
+def_key "ctrl-u"
+    page_up
+def_key "ctrl-d"
+    page_down
+
+def_key "n"
+    next_found_item
+def_key "N"
+    previous_found_item
+
+def_key "G"
+    move_end
+def_key "g"
+    move_home
+def_key "U"
+    update_database
+def_key "x"
+    delete_playlist_items
+def_key "x"
+    delete_browser_items
+def_key "x"
+    delete_stored_playlist
+
+#def_key "9"
+#    show_last
+
+def_key "0"
+    show_clock
+
+def_key "ß"
+    show_server_info
+
+def_key "."
+    show_lyrics

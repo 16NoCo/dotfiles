@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Alt Tab
+Exec=/usr/bin/gnome-pie -o 894
+Encoding=UTF-8
+Type=Application
+Icon=preferences-system-network-share-windows
+StartupWMClass=gnome-pie-894

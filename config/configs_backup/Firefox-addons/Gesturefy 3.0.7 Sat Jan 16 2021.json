@@ -1,0 +1,707 @@
+{
+  "Gestures": [
+    {
+      "pattern": [
+        [
+          -37,
+          -25
+        ],
+        [
+          -88,
+          -11
+        ],
+        [
+          -50,
+          17
+        ],
+        [
+          -63,
+          62
+        ],
+        [
+          -22,
+          68
+        ],
+        [
+          4,
+          50
+        ],
+        [
+          33,
+          49
+        ],
+        [
+          84,
+          43
+        ],
+        [
+          105,
+          -4
+        ],
+        [
+          46,
+          -24
+        ],
+        [
+          22,
+          -27
+        ],
+        [
+          8,
+          -23
+        ],
+        [
+          -4,
+          -44
+        ],
+        [
+          -16,
+          -17
+        ],
+        [
+          -56,
+          -17
+        ],
+        [
+          -77,
+          8
+        ]
+      ],
+      "command": {
+        "name": "OpenAddonSettings"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -1,
+          -1
+        ]
+      ],
+      "command": {
+        "name": "FocusLeftTab"
+      }
+    },
+    {
+      "pattern": [
+        [
+          1,
+          -1
+        ]
+      ],
+      "command": {
+        "name": "FocusRightTab"
+      }
+    },
+    {
+      "pattern": [
+        [
+          0,
+          -1
+        ]
+      ],
+      "command": {
+        "name": "ScrollTop",
+        "settings": {
+          "duration": 100
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          1,
+          0
+        ]
+      ],
+      "command": {
+        "name": "PageForth"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -1,
+          0
+        ]
+      ],
+      "command": {
+        "name": "PageBack"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -25,
+          352
+        ],
+        [
+          193,
+          22
+        ]
+      ],
+      "command": {
+        "name": "CloseTab",
+        "settings": {
+          "nextFocus": "default",
+          "closePinned": true
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          21,
+          300
+        ],
+        [
+          17,
+          -300
+        ]
+      ],
+      "command": {
+        "name": "ReloadTab",
+        "settings": {
+          "cache": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          53,
+          270
+        ],
+        [
+          -4,
+          31
+        ],
+        [
+          -52,
+          14
+        ],
+        [
+          -198,
+          -21
+        ]
+      ],
+      "command": {
+        "name": "RestoreTab",
+        "settings": {
+          "currentWindowOnly": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          -4,
+          -50
+        ],
+        [
+          36,
+          -134
+        ],
+        [
+          -15,
+          -107
+        ],
+        [
+          174,
+          269
+        ],
+        [
+          -7,
+          -10
+        ],
+        [
+          13,
+          -86
+        ],
+        [
+          88,
+          -201
+        ],
+        [
+          48,
+          179
+        ],
+        [
+          -12,
+          198
+        ],
+        [
+          -4,
+          12
+        ]
+      ],
+      "command": {
+        "name": "ToggleMute"
+      }
+    },
+    {
+      "pattern": [
+        [
+          83,
+          -220
+        ],
+        [
+          -2,
+          -40
+        ],
+        [
+          -4,
+          -10
+        ],
+        [
+          -14,
+          6
+        ],
+        [
+          -30,
+          212
+        ],
+        [
+          32,
+          240
+        ],
+        [
+          -4,
+          11
+        ],
+        [
+          -10,
+          4
+        ],
+        [
+          -11,
+          -2
+        ],
+        [
+          -53,
+          -64
+        ],
+        [
+          -13,
+          -44
+        ],
+        [
+          6,
+          -53
+        ],
+        [
+          34,
+          -60
+        ],
+        [
+          26,
+          -29
+        ]
+      ],
+      "command": {
+        "name": "ToggleFullscreen"
+      }
+    },
+    {
+      "pattern": [
+        [
+          201,
+          -14
+        ],
+        [
+          9,
+          -6
+        ],
+        [
+          23,
+          -161
+        ],
+        [
+          -9,
+          -24
+        ]
+      ],
+      "command": {
+        "name": "ScrollTop",
+        "settings": {
+          "duration": 100
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          14,
+          -2
+        ],
+        [
+          9,
+          -6
+        ],
+        [
+          182,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          18,
+          55
+        ],
+        [
+          -35,
+          234
+        ]
+      ],
+      "command": {
+        "name": "ScrollBottom",
+        "settings": {
+          "duration": 100
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          334,
+          -214
+        ],
+        [
+          -9,
+          -7
+        ],
+        [
+          -183,
+          8
+        ],
+        [
+          -29,
+          7
+        ]
+      ],
+      "command": {
+        "name": "FocusPreviousSelectedTab"
+      }
+    },
+    {
+      "pattern": [
+        [
+          37,
+          -147
+        ],
+        [
+          10,
+          -3
+        ],
+        [
+          75,
+          12
+        ],
+        [
+          9,
+          -5
+        ],
+        [
+          26,
+          -193
+        ],
+        [
+          -5,
+          -29
+        ]
+      ],
+      "command": {
+        "name": "IncreaseURLNumber"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -12,
+          182
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          56,
+          10
+        ],
+        [
+          184,
+          -8
+        ],
+        [
+          10,
+          -4
+        ],
+        [
+          -60,
+          159
+        ],
+        [
+          1,
+          10
+        ]
+      ],
+      "command": {
+        "name": "DecreaseURLNumber"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -20,
+          5
+        ],
+        [
+          -208,
+          8
+        ],
+        [
+          -2,
+          -26
+        ],
+        [
+          14,
+          -180
+        ],
+        [
+          -125,
+          37
+        ]
+      ],
+      "command": {
+        "name": "URLLevelUp"
+      }
+    },
+    {
+      "pattern": [
+        [
+          2,
+          123
+        ],
+        [
+          17,
+          30
+        ],
+        [
+          113,
+          -142
+        ],
+        [
+          -13,
+          69
+        ],
+        [
+          -106,
+          186
+        ],
+        [
+          -158,
+          127
+        ]
+      ],
+      "command": {
+        "name": "CopyTabURL"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -5,
+          277
+        ]
+      ],
+      "command": {
+        "name": "OpenLinkInNewTab",
+        "settings": {
+          "position": "default",
+          "focus": true,
+          "emptyTab": true
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          29,
+          -13
+        ],
+        [
+          58,
+          -6
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          -12,
+          119
+        ],
+        [
+          132,
+          -92
+        ],
+        [
+          0,
+          51
+        ],
+        [
+          -24,
+          83
+        ],
+        [
+          -125,
+          138
+        ]
+      ],
+      "command": {
+        "name": "CopyLinkURL"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -300,
+          22
+        ],
+        [
+          -8,
+          64
+        ],
+        [
+          11,
+          33
+        ],
+        [
+          23,
+          1
+        ],
+        [
+          82,
+          -37
+        ],
+        [
+          17,
+          -18
+        ],
+        [
+          -13,
+          48
+        ],
+        [
+          -184,
+          221
+        ],
+        [
+          -83,
+          61
+        ]
+      ],
+      "command": {
+        "name": "CopyImage"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -3,
+          -248
+        ],
+        [
+          29,
+          -92
+        ],
+        [
+          31,
+          33
+        ],
+        [
+          34,
+          63
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          -117,
+          -1
+        ]
+      ],
+      "command": {
+        "name": "PasteClipboard"
+      }
+    },
+    {
+      "pattern": [
+        [
+          14,
+          -174
+        ],
+        [
+          45,
+          140
+        ]
+      ],
+      "command": {
+        "name": "OpenURLFromClipboardInNewTab",
+        "settings": {
+          "position": "default",
+          "focus": true
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          69,
+          -99
+        ],
+        [
+          119,
+          -269
+        ],
+        [
+          18,
+          328
+        ]
+      ],
+      "command": {
+        "name": "PopupAllTabs",
+        "settings": {
+          "order": "none"
+        }
+      }
+    }
+  ],
+  "Settings": {
+    "Rocker": {
+      "active": true
+    },
+    "Wheel": {
+      "mouseButton": "2",
+      "active": true
+    },
+    "Gesture": {
+      "matchingAlgorithm": "shape-independent",
+      "suppressionKey": "ctrlKey",
+      "Timeout": {
+        "active": true,
+        "duration": 2
+      }
+    },
+    "General": {
+      "theme": "dark"
+    }
+  }
+}

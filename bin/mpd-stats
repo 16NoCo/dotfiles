@@ -1,0 +1,127 @@
+#!/bin/bash
+
+__ScriptVersion="0.1"
+
+#===  FUNCTION  ================================================================
+#         NAME:  usage
+#  DESCRIPTION:  Display usage information.
+#===============================================================================
+function usage ()
+{
+    echo "Usage :  $0 [options] [--]
+
+    Options:
+    -h|help       Display this message
+    -v|version    Display script version"
+
+}    # ----------  end of function usage  ----------
+
+#-----------------------------------------------------------------------
+#  Handle command line arguments
+#-----------------------------------------------------------------------
+
+function remaining_songs() {
+    PLAYCOUNT_REGISTERED=$(mpc sticker "" find playcount | wc -l);
+    PLAYCOUNT_NULL=$(mpc sticker "" find playcount | grep "=0" | wc -l);
+    PLAYCOUNT_PLAYED=$((PLAYCOUNT_REGISTERED - PLAYCOUNT_NULL ));
+    PLAYCOUNT_TOTAL=$(mpc stats | grep "Songs:" | cut -d " " -f 2- | sed 's/^ *//g');
+
+    echo -e "Played:\t\t$PLAYCOUNT_PLAYED \nTotal:\t\t$PLAYCOUNT_TOTAL \nRemaining:\t$(($PLAYCOUNT_TOTAL-$PLAYCOUNT_PLAYED))\t$(echo $((10000-10000*$PLAYCOUNT_PLAYED/$PLAYCOUNT_TOTAL)) | sed 's/\(...\)$/\.\1/')%"
+}
+
+function top_songs() {
+    ht=$1
+    count=$2
+    mpc sticker "" find playcount | sed "s/\(.*\)\/\(.*\)\/\(.*\)\.[a-z0-9]\{3\}:\ playcount=\(.*\)$/\4\t\1\t\2\t\3/" | sort -nr | $ht -n $count
+}
+
+function played() {
+    dir=$1
+    list=$(mpc sticker "$dir" find playcount)
+    if [[ ${#list} == 0 ]]; then
+        echo "mpd-stats: mpc sticker: '$dir': No such directory"
+        exit 1
+    fi
+    total=0
+    totalcount=0
+    while IFS= read -r line; do
+        file=$(echo $line | sed "s/^\(.*\): playcount=\(.*\)$/\1/")
+        count=$(echo $line | sed "s/^\(.*\): playcount=\(.*\)$/\2/")
+        duration=$(mpc -f %time% listall "$file" | awk -F: '{ if (NF == 1) {print $NF} else if (NF == 2) {print $1 * 60 + $2} else if (NF==3) {print $1 * 3600 + $2 * 60 + $3} }')
+        total=$((total+count*duration))
+        totalcount=$((totalcount+count))
+    done <<< "$list"
+    days=$((total/(24*3600)))
+    hours=$((total%(24*3600)/3600))
+    min=$((total%3600/60))
+    printf -v min "%02d" $min
+    sec=$((total%60))
+    printf -v sec "%02d" $sec
+
+    songscount=$(mpc listall "$dir" | wc -l)
+    if [[ $dir == *"/"* ]]; then
+        echo "Showing result for artist \"$(echo $dir | cut -d/ -f1)\", album \"$(echo $dir | cut -d/ -f2-)\"."
+    elif [[ ${#dir} -gt 0 ]]; then
+        echo "Showing result for artist \"$(echo $dir | cut -d/ -f1)\"."
+    else
+        echo "Showing result for all library"
+    fi
+
+    echo -e "Number of songs:\t$songscount"
+    echo -e "Played songs:\t\t$totalcount"
+    echo -e "Playtime:\t\t$days days $hours:$min:$sec"
+}
+
+while getopts ":hvrtTp" opt
+do
+  case $opt in
+
+    h|help     )  usage; exit 0   ;;
+
+    v|version  )  echo "$0 -- Version $__ScriptVersion"; exit 0   ;;
+
+    r|remaining )
+        remaining_songs;;
+
+    t|top )
+        # Check next positional parameter
+        eval nextopt=\${$OPTIND}
+        # existing or starting with dash?
+        if [[ -n $nextopt && $nextopt != -* ]] ; then
+            OPTIND=$((OPTIND + 1))
+            count=$nextopt
+        else
+            count=15
+        fi
+        top_songs head $count;;
+
+    T|tail )
+        # Check next positional parameter
+        eval nextopt=\${$OPTIND}
+        # existing or starting with dash?
+        if [[ -n $nextopt && $nextopt != -* ]] ; then
+            OPTIND=$((OPTIND + 1))
+            count=$nextopt
+        else
+            count=15
+        fi
+        top_songs tail $count;;
+
+    p|played )
+        # Check next positional parameter
+        eval nextopt=\${$OPTIND}
+        # existing or starting with dash?
+        if [[ -n $nextopt && $nextopt != -* ]] ; then
+            OPTIND=$((OPTIND + 1))
+            dir=$nextopt
+        else
+            dir=""
+        fi
+        played "$dir";;
+
+    * )  echo -e "\n  Option does not exist : $OPTARG\n"
+          usage; exit 1   ;;
+
+  esac    # --- end of case ---
+done
+shift $(($OPTIND-1))

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/noe/.vim/ftplugin'
+let g:netrw_dirhist_0='/home/noe/.vim'
+let g:netrw_dirhist_9='/home/noe/.vim/ftplugin'
+let g:netrw_dirhist_8='/home/noe/.vim'
+let g:netrw_dirhist_7='/home/noe/.vim/plugin'
+let g:netrw_dirhist_6='/home/noe/.vim'
+let g:netrw_dirhist_5='/home/noe/.vim/plugged'
+let g:netrw_dirhist_4='/home/noe/.vim'
+let g:netrw_dirhist_3='/home/noe/.vim/autoload'
+let g:netrw_dirhist_2='/home/noe/.vim'

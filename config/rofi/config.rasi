@@ -1,0 +1,11 @@
+configuration {
+  show-icons:         true;
+  /*icon-theme:         "Papirus-dark";*/
+  cycle:              true;
+  hide-scrollbar:     true;
+  disable-history:    false;
+  modi:               "drun,window";
+  theme:              "/home/noe/.config/rofi/themes/onedark";
+  display-drun:       "apps";
+  columns: 2;
+}

@@ -1,0 +1,15 @@
+[credential]
+	helper = cache --timeout=604800
+
+[merge]
+	tool = vimdiff
+
+[mergetool]
+	keepBackup = false
+    
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[include]
+	path = ~/.gitconfig_local
+

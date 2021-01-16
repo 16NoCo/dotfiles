@@ -1,0 +1,6 @@
+#command
+t   forw-line
+s   back-line
+j   next-tag
+J   prev-tag
+k   toggle-option o
