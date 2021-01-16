@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Main bis
+Exec=/usr/bin/gnome-pie -o 735
+Encoding=UTF-8
+Type=Application
+Icon=gnome-pie
+StartupWMClass=gnome-pie-735

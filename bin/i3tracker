@@ -1,0 +1,220 @@
+#!/usr/bin/zsh
+# This *should* be thread safe, within reason.  That is, it can be run
+# multiple times, once per workspace, with different tags, and it should
+# track things fine.
+
+##############################################################################
+# Things you can tune for your workflow      #################################
+
+# How long to wait before responding to a desktop change. If you jump away
+# to scan your inbox on another desktop and jump back quickly enough, it'll
+# be ignored.
+LAG=60
+# Used only by reconcile, DELTA is the amount of time in seconds used to
+# determine whether to join two records, and whether to delete short records.
+DELTA=300
+
+# End of tuning variables                    #################################
+##############################################################################
+
+
+# The name of this script
+ME=$(basename $0)
+VERSION=v1.0.0
+
+# Debug mode
+if [[ $1 == "-d" ]]; then
+    set -x
+    shift
+fi
+
+# NOP mode
+NOP=""
+if [[ $1 = "-n" ]]; then
+    NOP=echo
+    shift
+fi
+
+function usage() {
+    printf "USAGE: $ME <options> <command> <args>
+   start     <tag>   Activate with a tag
+   stop      <tag>   Deactivate tag
+   isactive          Prints '1' if the tracker is enabled
+   reconcile <tag>   Collapses close records, removes short ones
+   version           Print the version and exit
+
+<options>:
+   -n    NOP -- print, but do not do anything stateful
+   -d    Debug -- echo every command
+
+NOP and Debug are mutually exclusive; if they're both provided, the behavior
+is unspecified and probably unpleasant.
+
+When enabled, grab the current workspace from i3. When this workspace is
+active, start a TimeWarrior timer with the supplied tag.
+
+'reconcile -n' prints what it would do, without doing it.
+Reconcile deletes all records less than a minute long, and then
+joins all records that are less than 5 minutes apart (end-to-start)
+and then deletes any remaining records that are less than 5 minutes
+long. It prints the amount of added and removed time, and the number
+of operations it performed; the entire thing can be undone by calling
+`timew undo` that many times.
+"
+}
+
+
+if [[ $1 != "isactive" && $# -lt 2 ]]; then
+    usage
+    exit 1
+fi
+
+function start() {
+    TAG="$1"
+    # TODO: configurable map of workspace to tag, rather than just one on the currently focused WS
+    ACT=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')
+    $NOP timew start "$TAG"
+    while true; do
+    	ws=$(i3-msg -t subscribe '["workspace"]' | jq -r .current.name)
+    	case $ws in
+    		$ACT)
+        		$0 start-child "$ws" "$TAG" &
+    			;;
+    		*)
+        		$0 stop-child "$ACT" "$TAG" &
+    			;;
+    	esac
+    done
+}
+
+function startchild() {
+	OLDW=$1
+	TAG=$2
+	sleep $LAG
+	ACT=$(i3-msg  -t get_workspaces | jq -r '.[] | select(.focused == true).name')
+    	# If we're not still on the active screen, don't start
+ 	[[ $ACT != $OLDW ]] && return
+ 	# TimeWarrior does a NOP if it's already running. If the tag changes, it
+ 	# auto-stops the old timer and starts the new one.
+	$NOP timew start "$TAG"
+}
+
+function stopchild() {
+	TQ=$(timew get dom.active)
+	# If we're not tracking anything, NOP
+	[[ $TQ -eq 0 ]] && return
+	OLDW=$1
+	TAG=$2
+	sleep $LAG
+	ACT=$(i3-msg  -t get_workspaces | jq -r '.[] | select(.focused == true).name')
+    	# If we're still on the active screen, don't stop
+ 	[[ $ACT == $OLDW ]] && return
+ 	# If we're tracking the requested tag, stop it
+    	AT=$(timew get dom.tag.1)
+	[[ $AT == $TAG ]] && $NOP timew stop "$TAG"
+}
+
+function kill() {
+    # TODO use traps
+    $NOP timew stop
+    pkill -9 $ME
+}
+
+function toSeconds() {
+    local epoch=$(date --utc -d @0 +%F)
+    date --utc -d "$epoch $1" +%s
+}
+
+function reconcile() {
+        # timew summary :month :id client:energage
+        # W20 2020-05-14 Thu @9  client:energage 12:58:48 13:32:12 0:33:24  0:33:24
+        # timew summary :month :id client:energage client:energage | grep @ | cut -b 58-66
+        local totalDeleted=0
+        local totalAddes=0
+        local undos=0
+
+	local tag=$1
+        # 1. Remove all 00:00:*
+	timew summary :month :id $tag | \
+		egrep -oe '@.*' | \
+		awk '{if ($4 != "-") print $1,$3,$4,$5}' |\
+        while read idv stv endv durv ; do
+		ns=$(toSeconds $durv)
+                if [[ $ns -lt 60 ]]; then
+                    printf "DEL %s: %s-%s %s\n" $idv $stv $endv $durv
+                    totalDeleted=$(expr $totalDeleted + $ns)
+                    undos=$(expr $undos + 1)
+                    $NOP timew delete $idv
+        	fi
+	done
+
+        # 2. Join all N.stv - (N-1).endv  < 5m
+        local oldid=""
+        local oldstart=""
+        local oldend=""
+	timew summary :month :id $tag | \
+		egrep -oe '@.*' | \
+		awk '{if ($4 != "-") print $1,$3,$4,$5}' |\
+        while read idv stv endv durv ; do
+            if [[ -n $oldend ]]; then
+		delta=$(date +%s -d @$(expr $(date +%s -d $stv) - $(date +%s -d $oldend)))
+		if [[ $delta -lt $DELTA && $delta -gt 0 ]]; then
+                    printf "JOIN %s %s: %s-%s -- %s-%s (%d)\n" $oldid $idv $oldstart $oldend $stv $endv $delta
+                    totalAdded=$(expr $totalAdded + $delta)
+                    undos=$(expr $undos + 1)
+                    $NOP timew join $oldid $idv
+    		fi
+            fi
+            oldid=$idv
+            oldstart=$stv
+            oldend=$endv
+        done
+
+        # 3. Remove all T < 00:05:*
+	timew summary :month :id $tag | \
+		egrep -oe '@.*' | \
+		awk '{if ($4 != "-") print $1,$3,$4,$5}' |\
+        while read idv stv endv durv ; do
+            ns=$(toSeconds $durv)
+            if [[ $ns -lt $DELTA ]]; then
+                printf "DEL %s: %s-%s %s\n" $idv $stv $endv $durv
+                totalDeleted=$(expr $totalDeleted + $ns)
+                undos=$(expr $undos + 1)
+                $NOP timew delete $idv
+            fi
+    done
+    printf "Total deleted: %d\n" $totalDeleted
+    printf "Total added:   %d\n" $totalAdded
+    delta=$(expr $totalAdded \- $totalDeleted)
+    printf "Delta:         %d\n" $delta
+    printf "Undos:         %d\n" $undos
+}
+
+case $1 in
+    version)
+        printf "%s %s\n" $ME $VERSION
+        ;;
+    start)
+        start $2
+        ;;
+    stop)
+        kill $2
+        ;;
+    stop-child)
+        stopchild $2 $3
+      	;;
+    start-child)
+        startchild $2 $3
+        ;;
+    isactive)
+        timew get dom.active | grep 1
+        ;;
+    reconcile)
+        reconcile $2 $3
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
+esac
+exit 0

@@ -1,0 +1,75 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+By Jesse_Avalos , See me on Eye Candy Linux_  on Google +
+Modified by http://www.NoobsLab.com
+]]
+
+conky.config = {
+	background = true,
+	use_xft = true,
+	font = 'Roboto:size=9',
+	xftalpha = 0.8,
+	update_interval = 1,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	--##############################################
+	-- Compositing tips:
+	-- Conky can play strangely when used with
+	-- different compositors. I have found the
+	-- following to work well, but your mileage
+	-- may vary. Comment/uncomment to suit.
+	--##############################################
+	-- no compositor
+	--own_window_type conky
+	--own_window_argb_visual no
+
+	-- xcompmgr
+	--own_window_type conky
+	--own_window_argb_visual yes
+
+	-- cairo-compmgr
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	--##############################################
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	stippled_borders = 0,
+	--border_margin = 5,
+	border_width = 1,
+	default_color = '#EDEBEB',
+	default_shade_color = '#000000',
+	default_outline_color = '#000000',
+	--alignment = 'top_right',
+	minimum_height = 250,
+	minimum_width = 600,
+	maximum_width = 600,
+	gap_x = 10,
+	gap_y = 10,
+	alignment = 'bottom_left',
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	short_units = true,
+	text_buffer_size = 2048,
+	use_spacer = none,
+	override_utf8_locale = true,
+	color1 = '#212021',
+	color2 = '#E8E1E6',
+	color3 = '#E82A2A',
+	own_window_argb_value = 0,
+	own_window_colour = '#000000',
+	lua_load = '~/.conky/conky_HUD.lua',
+	lua_draw_hook_pre = 'main'
+}
+
+conky.text = [[
+#${goto 145}${voffset 25}${font GeosansLight:size=25} Today
+${goto 25}${voffset 80}${font Ubuntu Mono:Italic:size=9}${if_match "${exec playerctl -l}"!="test"}${exec playerctl metadata --format "{{xesam:artist}} − {{title}}" | cut -c -38}$endif${goto 24}${voffset 17}${font GeosansLight:light:size=70}${time %H:%M}${goto 24}${voffset -44}${if_match $battery_percent<=30}${color 440000}$endif${if_match $battery_percent<=20}${color 660000}$endif${if_match $battery_percent<=10}${color AA0000}$endif${if_match $battery_percent>30}${color aaaaaa}$endif${if_match "${exec acpi -b | grep 0: | cut -f2 -d: | cut -f1 -d,}"==" Charging"}${color 115511}$endif${battery_bar 5,220}$color${goto 293}${voffset -37}${font GeosansLight:size=25}Systems${font GeosansLight:size=22}${goto 293}${voffset 34}${font Dingytwo:size=17}M$font${offset 8}${voffset -11}${font GeosansLight:size=15}$acpitemp°C${offset 55}${voffset 0}${cpu cpu0}%${goto 325}${voffset 30}$mem${font GeosansLight:size=15}${goto 325}${voffset 30}${if_up wlp58s0}${upspeed wlp58s0}/s / ${totalup wlp58s0}${else}${if_up enp0s20f0u2}${upspeed enp0s20f0u2}/s / ${totalup enp0s20f0u2}${endif}${if_up ppp0}${upspeed ppp0}/s / ${totalup ppp0}${endif}${endif}${goto 325}${voffset 30}${if_up wlp58s0}${downspeed wlp58s0}/s / ${totaldown wlp58s0}${else}${if_up enp0s20f0u2}${downspeed enp0s20f0u2}/s / ${totaldown enp0s20f0u2}${endif}${if_up ppp0}${downspeed ppp0}/s / ${totaldown ppp0}${endif}${endif}${goto 390}${voffset -90}${font Dingytwo:size=17}7$font${goto 293}${voffset 20}${font Dingytwo:size=17}O$font${goto 293}${voffset 18}${font Dingytwo:size=17}5$font${goto 293}${voffset 18}${font Dingytwo:size=17}4$font
+${alignr 360}${voffset -27}${font GeosansLight:size=17}${time %A, %d %B}
+]]

@@ -1,0 +1,18 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "mpDris2"]
+	path = mpDris2
+	url = https://github.com/eonpatapon/mpDris2
+[submodule "picom"]
+	path = picom
+	url = https://github.com/yshui/picom
+[submodule "i3lock-fancy"]
+	path = i3lock-fancy
+	url = https://github.com/meskarune/i3lock-fancy
+[submodule "i3lock-color"]
+	path = i3lock-color
+	url = https://github.com/PandorasFox/i3lock-color
+[submodule "libinput-gestures"]
+	path = libinput-gestures
+	url = https://github.com/bulletmark/libinput-gestures

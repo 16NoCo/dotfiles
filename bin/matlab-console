@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gnome-terminal -t "Matlab console" -- /usr/local/MATLAB/R2018a/bin/matlab -nodisplay -nosplash

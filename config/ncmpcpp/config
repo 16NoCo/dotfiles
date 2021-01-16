@@ -1,0 +1,30 @@
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory = ~/.ncmpcpp/lyrics
+mpd_host = localhost
+mpd_port = 6660
+mpd_music_dir = /home/noe/Music/
+
+## Available values: spectrum, wave, wave_filled, ellipse.
+visualizer_type = spectrum
+#visualizer_look = ▌▎
+visualizer_look = "▋▋"
+visualizer_in_stereo = "no"
+visualizer_sync_interval = "10"
+#header_visibility = "no"
+#statusbar_visibility = "no"
+
+autocenter_mode = "yes"
+
+playlist_disable_highlight_delay = 0
+message_delay_time = 3
+progressbar_look = ▃▃▃
+#progressbar_look = ═╪─
+lyrics_fetchers =  genius, azlyrics, lyricwiki, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
+follow_now_playing_lyrics = yes
+clock_display_seconds = yes
+mouse_support = yes
+external_editor = nvim
+allow_for_physical_item_deletion = yes
+lastfm_preferred_language = fr
+screen_switcher_mode = playlist, browser, media_library
+execute_on_song_change = "~/.config/ncmpcpp/scripts/song_change.sh &"

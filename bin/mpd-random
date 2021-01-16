@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+# Options
+queue_length=30
+clear_queue=0
+play=1
+
+__ScriptVersion="0.2"
+
+#===  FUNCTION  ================================================================
+#         NAME:  usage
+#  DESCRIPTION:  Display usage information.
+#===============================================================================
+function usage ()
+{
+    echo "Usage :  $0 [options]
+
+    Options:
+    -h|help       Display this message and exit
+    -v|version    Display script version and exit"
+
+}    # ----------  end of function usage  ----------
+
+#-----------------------------------------------------------------------
+#  Handle command line arguments
+#-----------------------------------------------------------------------
+
+while getopts ":hvl:pc" opt
+do
+  case $opt in
+
+    h|help     )  usage; exit 0   ;;
+
+    v|version  )  echo "$0 -- Version $__ScriptVersion"; exit 0   ;;
+
+    l)
+        l=${OPTARG}
+        if [[ $l -gt 1 && $l -le 500 ]]; then
+            queue_length=$l
+        fi;;
+    p)
+        play=0;;
+    c)
+        clear_queue=1;;
+
+    * )  echo -e "\n  Option does not exist : $OPTARG\n"
+          usage; exit 1   ;;
+
+  esac    # --- end of case ---
+done
+shift $(($OPTIND-1))
+
+
+files=$(mpc listall)
+
+if [[ $clear_queue == 1 ]]; then
+    mpc clear &> /dev/null
+    for i in {1..$queue_length}; do
+        file=$(echo "$files" | shuf -n 1)
+        mpc add "$file"
+    done
+fi
+if [[ $play == 1 ]]; then
+    mpc play -q
+    if ! [[ $(mpc | grep %\)) ]]; then
+        for i in {1..$queue_length}; do
+            file=$(echo "$files" | shuf -n 1)
+            mpc add "$file"
+        done
+        mpc play -q
+    fi
+fi
+
+
+reshuffle=0
+while true; do
+    if [[ $(mpc | grep %\)) ]]
+    then
+        queue=$(mpc | grep %\) | cut -d# -f2 | cut -d" " -f1)
+        remaining=$(($(echo $queue | cut -d/ -f2)-$(echo $queue | cut -d/ -f1)))
+        if [[ $remaining -lt $queue_length ]]; then
+            file=$(echo "$files" | shuf -n 1)
+            mpc add "$file"
+            reshuffle=$((reshuffle+1))
+            if [[ $reshuffle -ge 5 ]]; then
+                reshuffle=0
+                files=$(echo "$files" | shuf)
+            fi
+        else
+            mpc idle player &> /dev/null
+        fi
+    else
+        mpc idle player &> /dev/null
+    fi
+done
