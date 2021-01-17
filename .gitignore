@@ -1,0 +1,7 @@
+config/ncmpcpp/scripts/last_played
+*.log
+**/log
+**/mpd/mpdstate
+**/mpd/pid
+**/mpd/state
+vim/plugged/*
