@@ -1,0 +1,105 @@
+[:6f909aff-0a0f-461e-9ae1-fc791f24cd19]
+foreground-color='#D8DEE9'
+highlight-foreground-color='rgb(46,52,64)'
+scrollbar-policy='never'
+palette=['rgb(59,66,82)', 'rgb(191,97,106)', 'rgb(163,190,140)', 'rgb(235,203,139)', 'rgb(129,161,193)', 'rgb(180,142,173)', 'rgb(136,192,208)', 'rgb(229,233,240)', 'rgb(76,86,106)', 'rgb(191,97,106)', 'rgb(163,190,140)', 'rgb(235,203,139)', 'rgb(129,161,193)', 'rgb(180,142,173)', 'rgb(143,188,187)', 'rgb(236,239,244)']
+visible-name='Nord - alpha'
+cursor-background-color='rgb(216,222,233)'
+use-system-font=false
+cursor-colors-set=true
+highlight-colors-set=true
+use-theme-colors=false
+use-transparent-background=true
+cursor-foreground-color='rgb(59,66,82)'
+font='MesloLGS NF 10'
+use-theme-transparency=false
+bold-color-same-as-fg=true
+bold-color='#D8DEE9'
+background-color='rgb(47,52,63)'
+background-transparency-percent=25
+highlight-background-color='rgb(136,192,208)'
+audible-bell=true
+
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+use-theme-colors=true
+
+[:46bb2e73-47ab-41b4-9e89-a89992ad9a93]
+foreground-color='#D8DEE9'
+highlight-foreground-color='rgb(46,52,64)'
+scrollbar-policy='never'
+palette=['rgb(59,66,82)', 'rgb(191,97,106)', 'rgb(163,190,140)', 'rgb(235,203,139)', 'rgb(129,161,193)', 'rgb(180,142,173)', 'rgb(136,192,208)', 'rgb(229,233,240)', 'rgb(76,86,106)', 'rgb(191,97,106)', 'rgb(163,190,140)', 'rgb(235,203,139)', 'rgb(129,161,193)', 'rgb(180,142,173)', 'rgb(143,188,187)', 'rgb(236,239,244)']
+visible-name='Nord - no background'
+cursor-background-color='rgb(216,222,233)'
+use-system-font=false
+cursor-colors-set=true
+highlight-colors-set=true
+use-theme-colors=false
+use-transparent-background=true
+cursor-foreground-color='rgb(59,66,82)'
+font='Ubuntu Mono 12'
+use-theme-transparency=false
+bold-color-same-as-fg=true
+bold-color='#D8DEE9'
+background-color='rgb(47,52,63)'
+background-transparency-percent=100
+highlight-background-color='rgb(136,192,208)'
+audible-bell=true
+
+[:a7708451-6949-4296-b135-1f5cc2e7923a]
+background-transparency-percent=100
+scrollbar-policy='never'
+use-theme-transparency=false
+use-transparent-background=true
+visible-name='Disappear'
+
+[:168171bb-379b-4170-8257-d9da46b83413]
+foreground-color='#D8DEE9'
+highlight-foreground-color='rgb(46,52,64)'
+scrollbar-policy='never'
+nord-gnome-terminal-version='0.1.0'
+palette=['#3B4252', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#88C0D0', '#E5E9F0', '#4C566A', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#8FBCBB', '#ECEFF4']
+visible-name='Nord'
+cursor-background-color='rgb(216,222,233)'
+use-system-font=false
+cursor-colors-set=true
+highlight-colors-set=true
+use-theme-colors=false
+use-transparent-background=false
+cursor-foreground-color='rgb(59,66,82)'
+font='MesloLGS NF 10'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#D8DEE9'
+background-color='#2E3440'
+background-transparency-percent=35
+highlight-background-color='rgb(136,192,208)'
+audible-bell=true
+
+[:12737a2d-0a58-4060-96cb-3ab7702918a9]
+foreground-color='rgb(211,215,207)'
+visible-name='Transparent - 2'
+scrollbar-policy='never'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-transparent-background=true
+use-theme-colors=true
+use-theme-transparency=false
+background-color='rgb(46,52,54)'
+background-transparency-percent=35
+audible-bell=true
+
+[/]
+default='6f909aff-0a0f-461e-9ae1-fc791f24cd19'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '6ae33291-39b4-4cad-b60d-59283ac15ba6', '12737a2d-0a58-4060-96cb-3ab7702918a9', '168171bb-379b-4170-8257-d9da46b83413', '6f909aff-0a0f-461e-9ae1-fc791f24cd19', 'a7708451-6949-4296-b135-1f5cc2e7923a', '46bb2e73-47ab-41b4-9e89-a89992ad9a93']
+
+[:6ae33291-39b4-4cad-b60d-59283ac15ba6]
+foreground-color='rgb(211,215,207)'
+visible-name='Transparent'
+scrollbar-policy='never'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(116,176,239)', 'rgb(222,44,202)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-transparent-background=true
+use-theme-colors=true
+use-theme-transparency=false
+background-color='rgb(46,52,54)'
+background-transparency-percent=35
+audible-bell=true
