@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rofi_command="rofi -theme themes/mpdmenu.rasi"
+rofi_command="rofi"
+#-theme themes/mpdmenu.rasi"
 
 ### Options ###
 # Gets the current status of mpd (for us to parse it later on)

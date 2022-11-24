@@ -21,12 +21,17 @@ function usage ()
 #-----------------------------------------------------------------------
 
 function remaining_songs() {
-    PLAYCOUNT_REGISTERED=$(mpc sticker "" find playcount | wc -l);
-    PLAYCOUNT_NULL=$(mpc sticker "" find playcount | grep "=0" | wc -l);
-    PLAYCOUNT_PLAYED=$((PLAYCOUNT_REGISTERED - PLAYCOUNT_NULL ));
-    PLAYCOUNT_TOTAL=$(mpc stats | grep "Songs:" | cut -d " " -f 2- | sed 's/^ *//g');
+    registered=$(mpc sticker "" find playcount | wc -l);
+    registered_null=$(mpc sticker "" find playcount | grep "=0" | wc -l);
+    played=$((registered - registered_null));
+    total=$(mpc stats | grep "Songs:" | cut -d " " -f 2- | sed 's/^ *//g');
+    remaining=$((total-played))
+    remaining_perc=$(awk -v PLAYED=$played -v TOTAL=$total 'BEGIN {printf "%.2f",(1-PLAYED/TOTAL)*100'})
 
-    echo -e "Played:\t\t$PLAYCOUNT_PLAYED \nTotal:\t\t$PLAYCOUNT_TOTAL \nRemaining:\t$(($PLAYCOUNT_TOTAL-$PLAYCOUNT_PLAYED))\t$(echo $((10000-10000*$PLAYCOUNT_PLAYED/$PLAYCOUNT_TOTAL)) | sed 's/\(...\)$/\.\1/')%"
+    echo -e "Played:\t\t$played"
+    echo -e "Total:\t\t$total"
+    #echo -e "Remaining:\t$remaining\t$(echo $((10000-10000*$PLAYCOUNT_PLAYED/$PLAYCOUNT_TOTAL)) | sed 's/\(...\)$/\.\1/')%"
+    echo -e "Remaining:\t$remaining\t$remaining_perc%"
 }
 
 function top_songs() {
@@ -123,5 +128,8 @@ do
           usage; exit 1   ;;
 
   esac    # --- end of case ---
+  exit
 done
+usage;
+exit 1
 shift $(($OPTIND-1))

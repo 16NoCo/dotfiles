@@ -1,0 +1,28 @@
+@import "nord_top_conf"
+
+configuration {
+    location: 3;
+    //columns: 5;
+    show-icons: false;
+}
+
+@theme "nord_top_noconf"
+
+* {
+    font: "RobotoMono Nerd Font Regular 46";
+}
+
+#inputbar {
+    enabled: false;
+}
+
+#listview {
+    //lines: 5;
+    layout: horizontal;
+    background-color: @bg;
+}
+
+#element {
+    width: 100px;
+    padding: 10px 0px 10px 25px;
+}

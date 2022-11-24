@@ -46,12 +46,15 @@ call plug#begin()
 
     " --------- adding the following three plugins for Latex ---------
     Plug 'lervag/vimtex'
-    Plug 'Konfekt/FastFold'
+    "Plug 'Konfekt/FastFold'
     Plug 'matze/vim-tex-fold'
     " Formater
     Plug 'Chiel92/vim-autoformat'
 
     Plug 'arcticicestudio/nord-vim'
+    Plug 'preservim/nerdtree'
+    Plug 'khaveesh/vim-fish-syntax'
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " This is new style
@@ -140,3 +143,21 @@ let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#error_symbol = 'E:'
 let airline#extensions#ale#warning_symbol = 'W:'
 hi Normal guibg=NONE ctermbg=NONE
+
+
+" NERDTree bépo re-mapping
+let g:NERDTreeMapJumpLastChild = "T"
+let g:NERDTreeMapJumpFirstChild = "S"
+let g:NERDTreeMapOpenInTab = "j"
+let g:NERDTreeMapOpenInTabSilent = "J"
+let g:NERDTreeMapOpenVSplit = "k"
+let g:NERDTreeMapChangeRoot = "L"
+let g:NERDTreeMapRefresh = "h"
+let g:NERDTreeMapRefreshRoot = "H"
+
+
+" Settings for Firenvim (nvim editing in Firefox)
+if exists('g:started_by_firenvim')
+    highlight Normal guibg=#2e3440
+    set guifont=monospace:h10
+endif

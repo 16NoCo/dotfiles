@@ -1,0 +1,15 @@
+@import "nord_top.rasi"
+
+configuration {
+    lines:  10;
+}
+
+window {
+    location:   north west;
+    //anchor:     north west;
+}
+
+inputbasr {
+    border:     1px;
+    border-color: @nord8;
+}

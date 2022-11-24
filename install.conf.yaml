@@ -8,11 +8,18 @@
 - link:
     ~/.bash:
     ~/.bin:
-    ~/.fonts:
-    ~/.vim:
     ~/.config/:
         glob: true
         path: config/*
+        exclude: [config/mpd, config/albert, config/autostart]
+    ~/.config/mpd/mpd.conf:
+    ~/.config/albert/albert.conf:
+    ~/.config/autostart/:
+        glob: true
+        path: config/autostart/*
+
+    ~/.fonts:
+    ~/.vim:
     ~/.local/share/:
         glob: true
         path: local/share/*

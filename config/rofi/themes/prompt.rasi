@@ -1,0 +1,15 @@
+@import "nord_center.rasi"
+
+inputbar, listview {
+    border-color: @nord11;
+}
+
+element.selected.urgent {
+    background-color: @nord11;
+    text-color: @bg;
+}
+
+element.selected.active {
+    background-color: @nord14;
+    text-color: @bg;
+}

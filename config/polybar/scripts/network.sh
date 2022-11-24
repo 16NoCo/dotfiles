@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# COLORS (default: Nord color scheme)
+fg_alt='#81A1C1'
+urgent='#BF616A'
+
+
 t=0
 
 toggle() {
@@ -13,9 +18,9 @@ while true; do
 #    if [[ $(cat /sys/class/net/wlp58s0/carrier) -eq 1 ]]; then
     netstate=$(nmcli | grep wlp58s0)
     if [[ $netstate == *"unavailable"* || $netstate == *"unmanaged"* ]]; then
-        echo ""
+        echo "%{F$fg_alt}"
     elif [[ $netstate == *"disconnected"* ]]; then
-        echo ""
+        echo "%{F$fg_alt}"
     else
         strength=$(nmcli dev wifi | grep "*" | awk -F "bit/s" '{print $2}' | sed 's/^ *//g' | cut -d " " -f1)
         printf -v strength "%03d" $strength
@@ -30,11 +35,11 @@ while true; do
                 label="";;
         esac
         if [[ $t -eq 0 ]]; then
-            echo "$label"
+            echo "%{F$fg_alt}$label"
         else
             ip=$(ifconfig wlp58s0 | grep "inet " | cut -d "i" -f 2 | cut -d " " -f 2)
             ssid=$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d: -f2)
-            echo "$label $ssid $ip"
+            echo "%{F$fg_alt}$label%{F-} $ssid $ip"
         fi
     fi
     sleep 10 &

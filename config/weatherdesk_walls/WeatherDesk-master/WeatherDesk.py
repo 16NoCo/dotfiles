@@ -192,7 +192,7 @@ def get_time_of_day(level=3, hour=None):
         thres = [5, 16, 19]
     elif level == 4:
         labels = ['morning', 'day', 'evening', 'night']
-        thres = [6, 9, 14, 16]
+        thres = [6, 9, 16, 19]
     else:
         raise ValueError('Invalid time level.')
 
@@ -331,7 +331,7 @@ def set_conditional_wallpaper(city, time_level, no_weather, walls_dir, file_form
 
     Desktop.set_wallpaper(file_name, desktop_env)
     
-    copyfile(file_name, '~/.config/weatherdesk_walls/wallpaper.jpg')
+    copyfile(file_name, os.path.join(os.path.expanduser('~'), '.config/weatherdesk_walls/wallpaper.jpg'))
 
 
 def restart_program():

@@ -13,7 +13,8 @@ SOURCE_ALIASES = {
 
 def main():
   pulse = pulsectl.Pulse()
-  rofi = Rofi(rofi_args=['-theme', 'themes/onedark', '-i'])
+  #rofi = Rofi(rofi_args=['-theme', 'themes/onedark', '-i'])
+  rofi = Rofi(rofi_args=['-i'])
 
   # Ask user for a source-output to move
   source_outputs = pulse.source_output_list()

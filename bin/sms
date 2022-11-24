@@ -1,0 +1,41 @@
+#!/bin/zsh
+
+device="0fe8092cdc0e7b08"
+
+# {{{1 `sms` Send a text message through kdeconnect-cli
+sms(){
+	local args="$@"
+	local phone_number name phone_type
+	khard phone --parsable | sort -u | fzf | IFS=$'\t' read -r phone_number name phone_type
+    #echo $phone_number
+    #echo $args
+	if [[ -z "${phone_number}" ]]; then
+		echo No recipient was chosen >&2
+		return
+	else
+		#echo "${name}"$'\t'"${phone_number}"$'\t'"${phone_type}" > ${_KDECONNECT_SMS_LAST_RECIPIENT}
+		kdeconnect-cli -d $device --send-sms "${args}" --destination "${phone_number}" && \
+		echo sent sms message to ${name}
+        #| fribidi
+	fi
+}
+
+# {{{1 `smsl` Send a text message through kdeconnect-cli to the last recipient used with sms
+smsl(){
+	local args="$@"
+	local phone_number name phone_type
+	IFS=$'\t' read -r phone_number name phone_type < ${_KDECONNECT_SMS_LAST_RECIPIENT}
+	if [[ -z "${recipient}" ]]; then
+		recipient="$(khardp)"
+		echo "${recipient}" > ${_KDECONNECT_SMS_LAST_RECIPIENT}
+	fi
+	if [[ -z "${recipient}" ]]; then
+		echo No recipient was chosen >&2
+		return
+	else
+		kdec --send-sms "${args}" --destination "${recipient}" && \
+		echo sent sms message to ${name} | fribidi
+	fi
+}
+
+sms $@

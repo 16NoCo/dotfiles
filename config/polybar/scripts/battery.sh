@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# COLORS (default: Nord color scheme)
+fg_alt='#81A1C1'
+urgent='#BF616A'
+
+
 t=0
 blink=0
+prev_level=50
 
 toggle() {
     t=$(((t + 1) % 2))
@@ -18,15 +24,26 @@ while true; do
     printf -v chargep "%03d" $charge
     if [[ $plug == "Discharging" ]]; then
         case $chargep in
-            00[0-9])
-                label='%{B#aa0000}'
+            00[0-9]|010)
+                if [[ $prev_level -ge 10 ]]; then
+                    notify-send "Battery below 10%" -u critical -i battery-010 -h string:x-canonical-private-synchronous:battery -t 0
+                fi
+                label="%{B$urgent}%{F-}"
                 if [[ $blink == 1 ]]; then
                     label="   ";
                 fi
                 blink=$(((blink + 1) % 2));;
-            01[0-9])
-                label='%{B#aa0000}';;
-            02[0-9])
+            01[1-5])
+                if [[ $prev_level -ge 16 ]]; then
+                    notify-send "Battery below 15%" -u normal -i battery-020 -h string:x-canonical-private-synchronous:battery -t 20000
+                fi
+                label="%{F$urgent}";;
+            01[6-9]|020)
+                if [[ $prev_level -ge 21 ]]; then
+                    notify-send "Battery below 20%" -u normal -i battery-020 -h string:x-canonical-private-synchronous:battery -t 20000
+                fi
+                label="%{F$urgent}";;
+            02[1-9])
                 label="";;
             03[0-9])
                 label="";;
@@ -45,23 +62,29 @@ while true; do
             *)
                 label="?";;
         esac
+        prev_level=$charge
     elif [[ $plug == "Charging" ]]; then
+        if [[ $prev_level -lt 20 ]]; then
+            notify-send "Charging" -u low -i battery-100-charging -h string:x-canonical-private-synchronous:battery -t 1
+        fi
         label=""
+        prev_level=50
     elif [[ $plug == "Full" ]]; then
         label=""
         if [[ $blink == 1 ]]; then
             label="   ";
         fi
         blink=$(((blink + 1) % 2))
+        prev_level=$charge
     else
         label=?
     fi
     if [[ $t -eq 0 ]]; then
         #echo `acpi | grep "Battery 0:" | cut -d, -f 2 | cut -d " " -f 2-`
-        echo "$label $charge%"
+        echo "%{F$fg_alt}$label%{F-} $charge%"
     else
         #echo `acpi | grep "Battery 0:" | cut -d, -f 2-3 | cut -d " " -f 2-`
-        echo "$label $fullstate"
+        echo "%{F$fg_alt}$label%{F-} $fullstate"
     fi
     sleep 1 &
     wait

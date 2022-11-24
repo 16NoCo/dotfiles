@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=mpDris2
+Icon=mpd
+Exec=mpDris2
+Keywords=mpd;mpdris;playerctl;
+Type=Application
+Categories=AudioVideo;Audio;Music;

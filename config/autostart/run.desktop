@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=sh -c '$HOME/.run/weatherdesk_walls/WeatherDesk-master/run'
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=WeatherDesk
+Name=WeatherDesk
+Comment[en_US]=
+Comment=

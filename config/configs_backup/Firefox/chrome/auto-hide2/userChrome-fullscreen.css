@@ -1,0 +1,59 @@
+/*:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox {
+  -moz-appearance: none;
+  background-color: transparent !important;
+  border-top: none;
+}
+:root:not([sizemode="fullscreen"]):not([customizing]) .browser-toolbar:not(.titlebar-color),
+:root:not([sizemode="fullscreen"]):not([customizing]) #tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[multiselected='true']:-moz-lwtheme,
+:root:not([sizemode="fullscreen"]):not([customizing]) #tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected='true']:-moz-lwtheme,
+* {
+  --tab-line-color: var(--color1);
+  --tab-min-width: 76px;
+}
+:root:not([sizemode="fullscreen"]):not([customizing]) #urlbar, :root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox #searchbar {border: none !important;}
+
+:root:not([sizemode="fullscreen"]):not([customizing]) #urlbar:not(.megabar):not([focused='true']):-moz-lwtheme,
+:root:not([sizemode="fullscreen"]):not([customizing]) #urlbar.megabar:not([focused='true']):-moz-lwtheme > #urlbar-background,
+:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox #searchbar:not(:focus-within):-moz-lwtheme,
+:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox {
+  border: none !important;
+}
+:root:not([sizemode="fullscreen"]):not([customizing]) #urlbar:not(.megabar):-moz-lwtheme,
+:root:not([sizemode="fullscreen"]):not([customizing]) #urlbar.megabar:-moz-lwtheme > #urlbar-background,
+:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox #searchbar:-moz-lwtheme {
+  background-color: #434c5e !important;
+}
+:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox {
+  --tabs-border-color: var(--background) !important;
+}
+
+:root:not([sizemode="fullscreen"]):not([customizing]) toolbox {
+  z-index: 10;
+  margin-top: 0px !important;
+  margin-bottom: -30px !important;
+  height: 0 !important;
+  pointer-events: none;
+}
+:root:not([sizemode="fullscreen"]):not([customizing]) vbox {pointer-events: all;}
+
+
+:root:not([sizemode="fullscreen"]):not([customizing]) #nav-bar {
+  opacity: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition: transform, ease-in-out 0.2s, opacity 0.2s ease-in-out !important;
+}
+/* All the states in which the URL bar is visible */
+/*:root:not([sizemode="fullscreen"]):not([customizing]) vbox:hover ~ #nav-bar, :root:not([sizemode="fullscreen"]):not([customizing]) toolbox:focus-within > #nav-bar, :root:not([sizemode="fullscreen"]):not([customizing]) #nav-bar:hover, :root:not([sizemode="fullscreen"]):not([customizing]) #mainPopupSet:hover ~ box #nav-bar, :root:not([sizemode="fullscreen"]):not([customizing]) #mainPopupSet:focus-within ~ box #nav-bar {
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
+}*/

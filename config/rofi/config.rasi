@@ -1,11 +1,18 @@
 configuration {
   show-icons:         true;
-  /*icon-theme:         "Papirus-dark";*/
   cycle:              true;
-  hide-scrollbar:     true;
   disable-history:    false;
   modi:               "drun,window";
-  theme:              "/home/noe/.config/rofi/themes/onedark";
+  theme:              "nord_top";
   display-drun:       "apps";
-  columns: 2;
+  me-select-entry:    "";
+  me-accept-entry:    "MousePrimary";
+  me-accept-custom:   "Control+MousePrimary";
+  hover-select:       true;
+  //monitor:            "primary";
 }
+
+listview {
+    scrollbar:  false;
+}
+@theme "~/.config/rofi/themes/nord_top_noconf.rasi"

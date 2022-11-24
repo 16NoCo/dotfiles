@@ -1,0 +1,13 @@
+@import "nord_top_conf"
+
+configuration {
+    location: 0;
+    yoffset: 0;
+}
+
+@theme "nord_top_noconf"
+
+inputbar {
+    border: 1px;
+    border-radius: 6px 6px 0 0;
+}

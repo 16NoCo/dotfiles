@@ -9,6 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+exec --no-startup-id $HOME/.config/i3/exec-commands
+exec "source $HOME/.profile"
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -109,8 +112,8 @@ set $workspace1 "1 龜"
 set $workspace2 "2 "
 set $workspace3 "3 "
 set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
+set $workspace5 "5 "
+set $workspace6 "6 "
 set $workspace7 "7 "
 set $workspace8 "8 "
 set $workspace9 "9 "
@@ -183,31 +186,50 @@ mode "resize" {
 # enter resize mode
 bindsym $mod+o mode "resize"
 
-set $bg-color 	         #2f343f
-set $bg-color-alpha      #cc2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #a3a4a5
-set $urgent-bg-color     #bf616a
-set $bg-transparent      #2F343Faa
-set $bg-foc-transp       #55555555
-set $ind-color           #aaaaaaaa
+set_from_resource $bg       background
+set               $bg_a     #4C566AAA
+set_from_resource $bg_alt   background_alt
+set_from_resource $bg_alta  background_alta
+set_from_resource $fg       foreground
+set_from_resource $fg_alt   foreground_alt
+set_from_resource $prim     primary
+set_from_resource $sec      secondary
+set_from_resource $urgent   urgent
+set               $clear    #00000000
 
 # window colors
-#                       border              background          text                 indicator
-#client.focused          #aa0000aa           #aa0000aa           $text-color          $bg-foc-transp     $bg-foc-transp
-client.focused          #d08770ff           #d08770ff           $text-color          $bg-foc-transp     $bg-foc-transp
-#client.unfocused        $bg-transparent     $bg-transparent    $inactive-text-color $bg-transparent
-client.unfocused        #00000000           #00000000           $inactive-text-color $ind-color         #00000000
-client.focused_inactive #00000000           #00000000           $inactive-text-color #00000000          #00000000
-client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          $ind-color
-client.background   #00000000
+#                       border      background      text        indicator
+client.focused          $fg_alt     $fg_alt         $fg         $bg_a           $clear
+client.unfocused        $clear      $clear          $fg_alt     $bg_alta        $clear
+client.focused_inactive $clear      $clear          $fg_alt     $clear          $clear          
+client.urgent           $urgent     $urgent         $fg         $bg_a           $bg_a
+client.background       $clear
+
+#set $bg-color 	         #2f343f
+#set $bg-color-alpha      #cc2f343f
+#set $inactive-bg-color   #2f343f
+#set $text-color          #f3f4f5
+#set $inactive-text-color #a3a4a5
+#set $urgent-bg-color     #bf616a
+#set $bg-transparent      #2F343Faa
+#set $bg-foc-transp       #55555555
+#set $ind-color           #aaaaaaaa
+
+## window colors
+##                       border              background          text                 indicator
+##client.focused          #aa0000aa           #aa0000aa           $text-color          $bg-foc-transp     $bg-foc-transp
+#client.focused          #d08770ff           #d08770ff           $text-color          $bg-foc-transp     $bg-foc-transp
+##client.unfocused        $bg-transparent     $bg-transparent    $inactive-text-color $bg-transparent
+#client.unfocused        #00000000           #00000000           $inactive-text-color $ind-color         #00000000
+#client.focused_inactive #00000000           #00000000           $inactive-text-color #00000000          #00000000
+#client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color          $ind-color
+#client.background   #00000000
 
 hide_edge_borders smart
 new_window normal 0
 for_window [class="Gnome-terminal"] border normal 10
-#for_window [class="Gnome-terminal"] title_format "<span background='transparent'>%title</span>"
 for_window [class="Firefox"] border none
+for_window [class="VirtualBox Machine"] border none
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -223,6 +245,8 @@ for_window [class="Firefox"] border none
 #		    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 #	    }
 #}
+
+force_focus_wrapping yes
 
 # Hide title bar for stacked/tabbed containers
 font pango:DejaVu Sans Mono 0
@@ -254,20 +278,29 @@ bindsym $mod+KP_Add scratchpad show
 bindsym $mod+h [class="copyq"] scratchpad show
 # Rofi shortcuts
 # Rofi − Network
-bindsym $mod+F11 exec $HOME/.config/rofi/scripts/networkmenu.py
+bindsym $mod+F11 exec rofeh -s & $HOME/.config/rofi/scripts/networkmenu.py && rofeh -u
 # Rofi monitors
-bindsym $mod+m exec $HOME/.config/rofi/scripts/monitor_layout.sh
+bindsym $mod+m exec rofeh -s & $HOME/.config/rofi/scripts/monitor_layout.sh && rofeh -u
 # Rofi bluetooth
-bindsym $mod+Shift+K exec --no-startup-id $HOME/.config/rofi/scripts/rofi-bluetooth.sh
+bindsym $mod+Shift+K exec rofeh -s & $HOME/.config/rofi/scripts/rofi-bluetooth.sh && rofeh -u
 # Rofi i3keybindings
-bindsym $mod+Shift+Q exec --no-startup-id $HOME/.config/rofi/scripts/i3keybindingsmenu.sh
+bindsym $mod+Shift+Q exec rofeh -s & $HOME/.config/rofi/scripts/i3keybindingsmenu.sh && rofeh -u
 # Rofi switch audio input
-bindsym $mod+F5 exec $HOME/.config/rofi/scripts/audio_move_source_output.py
+bindsym $mod+F5 exec rofeh -s & $HOME/.config/rofi/scripts/audio_move_source_output.py && rofeh -u
 # Rofi switch audio output
-bindsym $mod+F6 exec $HOME/.config/rofi/scripts/audio_move_sink_input.py
+bindsym $mod+F6 exec rofeh -s & $HOME/.config/rofi/scripts/audio_move_sink_input.py && rofeh -u
+# Rofi mpd playlist
+bindsym $mod+j exec rofeh -s & $HOME/.config/rofi/scripts/mpd_songs.sh && rofeh -u
+# Rofi power menu
+bindsym $mod+Shift+Delete exec rofeh -s & $HOME/.config/rofi/scripts/powermenu.sh && rofeh -u
+# deadd notification center
+bindsym $mod+BackSpace exec kill -s USR1 $(pidof deadd-notification-center)
 
 # Toggle polybar
-bindsym $mod+Shift+E exec polybar-msg cmd toggle
+#bindsym $mod+Shift+E exec polybar-msg cmd toggle
+bindsym $mod+Shift+E exec echo "cmd:toggle" >/tmp/ipc-example
+# Toggle tray polybar
+bindsym $mod+Shift+egrave exec echo "cmd:toggle" >/tmp/ipc-tray
 # launch calculator
 bindsym $mod+KP_Enter exec gnome-calculator
 for_window [class="Gnome-calculator"] floating enable
@@ -275,18 +308,20 @@ for_window [class="Gnome-calculator"] floating enable
 bindsym $mod+Print exec flameshot gui
 # launch DeepL
 bindsym $mod+shift+D exec --no-startup-id deepl -geometry 900x680
+for_window [class="deepltranslator-nativefier-40862d"] move scratchpad
+for_window [class="deepltranslator-nativefier-40862d"] floating enable
+bindsym $mod+D [class="deepltranslator-nativefier-40862d"] scratchpad show
 # launch rofi/dmenu
-bindsym $mod+i exec rofi -show run
+bindsym $mod+i exec rofeh -s & rofi -show run && rofeh -u
 # focus urgent window
 bindsym $mod+v [urgent="latest"] focus
 #bindsym $mod+i exec "rofi -show run -lines 3 -eh 2 -width 100 -padding 600 -opacity \\"85\\" -bw 0 -font \\"System San Francisco Display 18\\" -color-normal \\"#00000000,$text-color,#00000000,#00000000,#9575cd\\" -color-window \\"$bg-color-alpha,$bg-color-alpha,$bg-color-alpha\\" -theme-str \\"#listview { border: none; padding: 15px 0 0 0;}\\""
 #bindsym $mod+i exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # Rofi applications
-bindsym $mod+b exec rofi -show drun
+bindsym $mod+b exec rofeh -s & rofi -show drun -location 1 -lines 10 && rofeh -u
 assign [class="discord"] $workspace8
 for_window [class="discord"] focus
 for_window [title="Ao"] floating enable
-for_window [class="deepltranslator-nativefier-40862d"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable, move up 20 px
 no_focus [title="Microsoft Teams Notification"]
 for_window [class="flameshot"] floating enable
@@ -295,6 +330,7 @@ for_window [class="Matplotlib"] floating enable
 for_window [window_role="EventDialog" class="Thunderbird"] floating enable
 for_window [title="Event Tester"] floating enable
 for_window [class="copyq"] move scratchpad
+for_window [title="About Mozilla"] floating enable
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ #&& pkill -RTMIN+1 i3blocks
@@ -325,6 +361,5 @@ bindsym $mod+q exec playerctl next
 # play previous song
 bindsym $mod+apostrophe exec playerctl previous
 
-#exec-always xmodmap /home/noe/.config/i3/xmod-esc
-#bindsym $mod+w exec --no-startup-id /home/noe/.config/i3/exec-always-commands
-exec --no-startup-id /home/noe/.config/i3/exec-commands
+#exec-always xmodmap $HOME/.config/i3/xmod-esc
+#bindsym $mod+w exec --no-startup-id $HOME/.config/i3/exec-always-commands

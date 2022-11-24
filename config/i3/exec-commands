@@ -1,13 +1,15 @@
 #!/bin/bash
 
+#xrdb ~/.Xresources
 redshift -l 50.5:4.5 -t 4000:3000 &
-$HOME/.config/weatherdesk_walls/WeatherDesk-master/run &
+#$HOME/.config/weatherdesk_walls/WeatherDesk-master/run &
+rofeh -u &
 $HOME/.config/i3/xmods.sh
 picom &
-#/home/noe/.config/polybar/scripts/launch_listener.sh
+#$HOME/.config/polybar/scripts/launch_listener.sh
 $HOME/.config/polybar/launch.sh
 libinput-gestures-setup start
-xss-lock -- i3lock-fancy &
+#xss-lock -- i3lock-fancy &
 xdotool key Num_Lock
 albert &
 mpd &

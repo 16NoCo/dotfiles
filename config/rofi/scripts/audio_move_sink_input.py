@@ -13,7 +13,8 @@ SINK_ALIASES = {
 
 def main():
   pulse = pulsectl.Pulse()
-  rofi = Rofi(rofi_args=['-theme', 'themes/onedark', '-i'])
+  #rofi = Rofi(rofi_args=['-theme', 'themes/onedark', '-i'])
+  rofi = Rofi(rofi_args=['-i'])
 
   # Ask user for a sink-input to move
   sink_inputs = pulse.sink_input_list()

@@ -1,5 +1,6 @@
 # Define layouts
 setxkbmap -layout "fr,be" -variant "bepo,basic"
+setxkbmap -option 'grp:alt_shift_toggle'
 
 # Both Shift's as CapsLock
 setxkbmap -option "shift:both_capslock"

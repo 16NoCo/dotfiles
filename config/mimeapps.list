@@ -221,7 +221,42 @@ x-scheme-handler\msteams=teams.desktop
 x-scheme-handler\notion=notion-desktop.desktop
 
 [Default Applications]
-x-scheme-handler/notion=notion-desktop.desktop
+x-scheme-handler/notion=notion-enhanced.desktop
+x-scheme-handler/msteams=teams.desktop
+text/html=firefox.desktop
+audio/x-mod=org.gnome.gedit.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-6GWVG1.desktop
+message/rfc822=userapp-Thunderbird-6GWVG1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-6GWVG1.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-JYBWG1.desktop
+text/calendar=userapp-Thunderbird-JYBWG1.desktop
+application/x-extension-ics=userapp-Thunderbird-JYBWG1.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-JYBWG1.desktop
+video/x-matroska=vlc.desktop
 
 [Added Associations]
 text/x-python3=gvim.desktop;
+text/plain=nvim.desktop;gvim.desktop;
+audio/midi=mscore3.desktop;
+video/x-matroska=vlc.desktop;
+application/x-subrip=org.gnome.gedit.desktop;
+application/pdf=inkscape.desktop;okularApplication_pdf.desktop;libreoffice-draw.desktop;zathura-pdf-poppler.desktop;nvim.desktop;
+audio/x-mod=nvim.desktop;org.gnome.gedit.desktop;
+text/html=firefox.desktop;
+application/octet-stream=org.gnome.gedit.desktop;
+image/jpeg=gimp.desktop;
+inode/directory=vlc.desktop;
+x-scheme-handler/sms=org.gnome.Shell.Extensions.GSConnect.desktop;
+x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;
+application/x-hdf=nvim.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors_onlyoffice-desktopeditors.desktop;
+application/gzip=nvim.desktop;org.gnome.Nautilus.desktop;
+video/mp4=vlc.desktop;
+text/calendar=thunderbird.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-6GWVG1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-6GWVG1.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-JYBWG1.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-JYBWG1.desktop;
+text/markdown=okularApplication_md.desktop;
+application/x-desktop=nvim.desktop;
+image/png=gimp.desktop;

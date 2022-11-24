@@ -1,0 +1,42 @@
+/************************************************
+ * ROFI Color theme
+ * Upload by: Daguhh
+ * Theme : Slate <https://www.deviantart.com/zb652/art/Slate-865544771>
+ * Creator : ZB652 <https://www.deviantart.com/zb652>
+ ***********************************************/
+
+@import "theme_base.rasi"
+
+
+* {
+    text:                       @nord6;
+    foreground:                  @nord9;
+    background:                  @bg-alt;
+    foreground-normal:           @text;
+    background-normal:           @bg-alt;
+    foreground-active:           @text;
+    background-active:           @nord3;
+    foreground-urgent:           @text;
+    background-urgent:           @nord2;
+    foreground-select:           @bg-alt;
+    background-select:           @foreground;
+}
+
+#listview {
+    border-color:   @foreground;
+    background-color:   @bg-alt;
+}
+
+#message{
+    border-color: @foreground;
+}
+
+#textbox {
+    text-color: @bg-alt;
+    background-color:   @foreground;
+}
+
+#inputbar,entry,prompt,textbox-prompt-colon,case-indicator {
+    text-color: @text;
+    background-color:   @bg;
+}

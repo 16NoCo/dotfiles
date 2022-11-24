@@ -1,0 +1,15 @@
+/************************************************
+ * ROFI Color theme
+ * User: Daguhh
+ * Copyright: 2020 Daguhh
+ ***********************************************/
+
+@import "common/theme_slate.rasi"
+@import "common/position.rasi"
+@import "common/shape_classic_sparse.rasi"
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+

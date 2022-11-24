@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rofi_command="rofi -theme themes/promptmenu.rasi"
+rofi_command="rofi -theme themes/prompt"
 
 ### Options ###
 yes_text="Confirm"
@@ -46,7 +46,7 @@ fi
 # Variable passed to rofi
 options="$yes_text\n$no_text"
 
-chosen="$(echo -e "$options" | $rofi_command -p "$query" -dmenu -a 0 -u 1 -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command -p "$query" -dmenu -a 0 -u 1 -selected-row 1 -i)"
 case $chosen in
     $yes_text)
         eval "$yes_command"

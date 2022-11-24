@@ -1,0 +1,75 @@
+/************************************************
+ * ROFI Color theme
+ * User: Daguhh
+ * Copyright: 2020 Daguhh
+ ***********************************************/
+
+@theme "~/.config/rofi/themes/nord_top_noconf.rasi"
+@import "common/shape_classic_sparse.rasi"
+@import "common/theme_nord.rasi"
+
+#window {
+    location:   north east;
+    padding:    0;
+    border-radius:  0;
+    background-color: transparent;
+    //font:       "Ubuntu 7";
+}
+
+#mainbox {
+    background-color: transparent;
+}
+
+#message {
+    background-color: @foreground;
+    horizontal-align: 0.5;
+}
+
+#listview {
+    border:     1px;
+}
+
+#element {
+    padding: 1px 1px 1px -16px;
+}
+#element-text {
+    horizontal-align: 0.5;
+}
+
+#element.normal.active,element.alternate.active {
+    border:     1px;
+    background-color:   inherit;
+}
+
+#inputbar {
+    padding: 5px;
+}
+
+#textbox-prompt-colon {
+    str:    "−";
+}
+
+/*************************************************************
+ * Use next conf to override alternate color 
+ * This should work with rofi defaults themes (rofi-theme-selector)
+ * Or with your themes if you follow naming convention 
+ * (i.e. <status>.background ...)*/
+
+/*element.alternate.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+element.alternate.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+element.alternate.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}*/
+/*************************************************************/
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}

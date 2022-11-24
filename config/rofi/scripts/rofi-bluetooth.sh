@@ -251,7 +251,7 @@ show_menu() {
     fi
 
     # Open rofi menu, read chosen option
-    chosen="$(echo -e "$options" | $rofi_command "Bluetooth")"
+    chosen="$(echo -e "$options" | $rofi_command "")"
 
     # Match chosen option to command
     case $chosen in
@@ -272,7 +272,7 @@ show_menu() {
             ;;
         *)
             #device=$(bluetoothctl devices | grep "$chosen")
-            device=$(echo "devices" | bluetoothctl | grep ^Device | grep $chosen)
+            device=$(echo "devices" | bluetoothctl | grep ^Device | grep "$chosen")
             # Open a submenu if a device is selected
             if [[ $device ]]; then device_menu "$device"; fi
             ;;
@@ -281,7 +281,8 @@ show_menu() {
 
 
 # Rofi command to pipe into, can add any options here
-rofi_command="rofi -dmenu -theme themes/onedark -no-fixed-num-lines -yoffset -100 -i -p"
+#rofi_command="rofi -dmenu -theme themes/onedark -no-fixed-num-lines -yoffset -100 -i -p"
+rofi_command="rofi -dmenu -no-fixed-num-lines -location 3 -i -p"
 
 case "$1" in
     --status)

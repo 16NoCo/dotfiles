@@ -1,0 +1,68 @@
+/*
+ 
+To change values, just search & replace said values
+ 
+Default Nav bar height      - 31px. Change this if you've customized its size. Replace ALL 31px with your customized value.
+Default Bookmark bar height - 30px. Change this if you've customized its size. Replace ALL 30px with your customized value.
+ 
+To customize auto hide delay - Replace ALL "5s" with Your preferred seconds delay.
+ 
+To customize animation speed when hiding - Change ALL 300ms values. Increase milliseconds for slower animations. Decrease for faster.
+To customize animation speed when hiding - Change ALL "93%" values in @keyframes accordingly. Increase % for faster animation. Decrease for slower.
+ 
+SEE a comment BELOW to disable auto hiding Bookmark bar.
+ 
+*/
+ 
+ 
+@keyframes navbar {
+    0%   {height: 31px; max-height: 31px; min-height: 31px; margin-bottom: -31px; z-index: 1000;}
+    93%  {height: 31px; max-height: 31px; min-height: 31px; margin-bottom: -31px; z-index: 1000;}
+    100% {height: 0; max-height: 0; min-height: 0; margin-bottom: 0px;}
+}
+ 
+@keyframes navbarHover {
+    0%   {margin-bottom: -31px;}
+    100% {height: 31px; max-height: 31px; min-height: 31px; margin-bottom: -31px; z-index: 1000;}
+}
+ 
+ 
+@keyframes personalToolbar {
+    0%   {height: 30px; max-height: 30px; min-height: 30px;}
+    93%  {height: 30px; max-height: 30px; min-height: 30px;}
+    100% {height: 0; max-height: 0; min-height: 0;}
+}
+ 
+ 
+@keyframes personalToolbarHover {
+    100% {height: 30px; max-height: 30px; min-height: 30px;}
+}
+ 
+@keyframes toolbarIcon {
+    0%   {opacity: 100; display: -moz-box;}
+    93%  {opacity: 100; display: -moz-box;}
+    100% {opacity: 0; display: none;}
+}
+ 
+@keyframes toolbarIconHover {
+    100% {opacity: 100; display: -moz-box;}
+}
+ 
+ 
+:root:not([sizemode="fullscreen"]):not([customizing]) #nav-bar {animation: navbar 1s forwards !important;}
+:root:not([sizemode="fullscreen"]):not([customizing]) #navigator-toolbox:hover #nav-bar {animation: navbarHover 100ms forwards !important;}
+ 
+/* Remove these 2 line if you want to disable auto hiding Bookmark bar. *
+:root:not([customizing]) #PersonalToolbar {animation: personalToolbar 1s forwards !important;}
+:root:not([customizing]) #navigator-toolbox:hover #PersonalToolbar {animation: personalToolbarHover 100ms forwards !important;}*/
+ 
+:root:not([customizing]) #nav-bar toolbarbutton .toolbarbutton-icon {animation: toolbarIcon 1s forwards !important;}
+:root:not([customizing]) #navigator-toolbox:hover #nav-bar toolbarbutton .toolbarbutton-icon {animation: toolbarIconHover 100ms forwards !important;}
+ 
+:root:not([customizing]) #navigator-toolbox #urlbar {--urlbar-toolbar-height: 31px !important}
+ 
+
+
+
+
+

@@ -125,14 +125,15 @@ def set_wallpaper(image, desktop_env):
             gsettings.set_string(KEY, uri)
 
             if false:
-            	bg = Image.open(image)
-            	dot = Image.open("/home/noe/.weatherdesk_walls/WeatherDesk-master/glowing-dot.png")
-            	d2 = dot.resize((20,20))
-            	new_image = Image.new("RGB",bg.size)
-            	new_image.paste(bg, (0,0))
-            	new_image.paste(d2, (int(bg.width/2)-23,527), d2.convert("RGBA"))
-            	new_image.save("/home/noe/.weatherdesk_walls/WeatherDesk-master/modified.jpg")
-            	bg.save("/home/noe/.weatherdesk_walls/WeatherDesk-master/original.jpg")
+                home_dir = os.path.expanduser('~')
+                bg = Image.open(image)
+                dot = Image.open(home_dir+"/.weatherdesk_walls/WeatherDesk-master/glowing-dot.png")
+               	d2 = dot.resize((20,20))
+               	new_image = Image.new("RGB",bg.size)
+               	new_image.paste(bg, (0,0))
+               	new_image.paste(d2, (int(bg.width/2)-23,527), d2.convert("RGBA"))
+               	new_image.save(home_dir+"/.weatherdesk_walls/WeatherDesk-master/modified.jpg")
+               	bg.save(home_dir+"/.weatherdesk_walls/WeatherDesk-master/original.jpg")
             
             #SCHEMA2 = 'org.gnome.desktop.screensaver'
             #gsettings2 = Gio.Settings.new(SCHEMA2)

@@ -10,7 +10,7 @@ else
 fi
 
 playing=true
-file_var="$(dirname $0)/last_played"
+file_var="$(dirname $0)/../scripts_data/last_played"
 last_played=$(cat $file_var 2>/dev/null)
 if [[ $? == 1 ]]; then
     touch $file_var
@@ -24,7 +24,7 @@ elif [[ $last_played == $track ]]; then
     fi
 fi
 
-echo $current_pc > "$(dirname $0)/current_pc"
+echo $current_pc > "$(dirname $0)/../scripts_data/current_pc"
 
 duration=$(mpc | grep %\) | sed "s/^.*\/\([0-9]*:[0-9]*\).*$/\1/" | awk -F: '{ if (NF == 1) {print $NF} else if (NF == 2) {print $1 * 60 + $2} else if (NF==3) {print $1 * 3600 + $2 * 60 + $3} }')
 sleep_time=5
@@ -42,6 +42,16 @@ while $playing; do
             #notify-send "$(($current_pc+1)): $track"
             playing=false
             echo $track > $file_var
+            if [[ $current_pc == 0 ]]; then
+                rem_songs=$(mpd-stats -r | grep "Remaining" | cut -f 2)
+                if [[ $rem_songs == 0 ]]; then
+                    notify-send "Congrats\!" "All the songs of your library have been played" -i gmpc
+                elif [[ $rem_songs == 1 ]]; then
+                    notify-send "One more song played\!" "There remain 1 song that has never been played" -i gmpc -u low
+                else
+                    notify-send "One more song played\!" "There remain $rem_songs songs that have never been played" -i gmpc -u low
+                fi
+            fi
         fi
     else
         #notify-send "changed: $track"

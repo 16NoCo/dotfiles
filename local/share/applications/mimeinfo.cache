@@ -1,0 +1,4 @@
+[MIME Cache]
+x-scheme-handler/obsidian=obsidian.desktop;
+x-scheme-handler/sms=org.gnome.Shell.Extensions.GSConnect.desktop;
+x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;

@@ -1,0 +1,94 @@
+#navigator-toolbox {
+  -moz-appearance: none;
+  background-color: transparent !important;
+  border-top: none;
+}
+.browser-toolbar:not(.titlebar-color),
+#tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[multiselected='true']:-moz-lwtheme,
+#tabbrowser-tabs:not([movingtab])
+  > .tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected='true']:-moz-lwtheme,
+* {
+  --tab-line-color: var(--color1);
+  --tab-min-width: 76px;
+}
+#urlbar, #navigator-toolbox #searchbar {border: none !important;}
+
+#urlbar:not(.megabar):not([focused='true']):-moz-lwtheme,
+#urlbar.megabar:not([focused='true']):-moz-lwtheme > #urlbar-background,
+#navigator-toolbox #searchbar:not(:focus-within):-moz-lwtheme,
+#navigator-toolbox {
+  border: none !important;
+}
+#urlbar:not(.megabar):-moz-lwtheme,
+#urlbar.megabar:-moz-lwtheme > #urlbar-background,
+#navigator-toolbox #searchbar:-moz-lwtheme {
+  background-color: #434c5e !important;
+}
+#navigator-toolbox {
+  --tabs-border-color: #434c5e !important;
+}
+
+:root:not([sizemode="fullscreen"]) toolbox {
+  z-index: 10;
+  margin-top: 0px !important;
+  margin-bottom: -30px !important;
+  height: 0 !important;
+  pointer-events: none;
+}
+vbox {pointer-events: all;}
+
+#nav-bar {
+  opacity: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition: transform, ease-in-out 0.2s, opacity 0.2s ease-in-out !important;
+  height: 30px;
+}
+/* All the states in which the URL bar is visible */
+:root[sizemode="fullscreen"] #nav-bar, vbox:hover ~ #nav-bar, toolbox:focus-within > #nav-bar, #nav-bar:hover, #mainPopupSet:hover ~ box #nav-bar, #mainPopupSet:focus-within ~ box #nav-bar {
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
+  z-index: 1000;
+}
+
+
+
+
+
+/* COMPACT MODE */
+:root {
+  /* Appmenu: Reduce item padding */
+  --arrowpanel-menuitem-padding-block: 4px 8px !important;
+  /* Tabbar: reduce tab margin */
+  --tab-block-margin: 4px 3px !important;
+}
+
+/* Tab: Reduce height */
+.tabbrowser-tab {
+  min-height: 24px !important;
+}
+
+/* URLBar: Fix vertical alignment */
+#urlbar[breakout=true]:not([open="true"]) {
+	--urlbar-height: 20px !important;
+	--urlbar-toolbar-height: 24px !important;
+}
+
+/* Toolbar: Reduce spacing */
+#urlbar-container {
+	--urlbar-container-height: 30px !important;
+  margin-top: 0 !important;
+}
+
+/* Reload Button: Fix vertical alignment */
+#reload-button {
+	margin-block-start: -2px !important;
+}

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xmodmap $HOME/.config/i3/xmod-esc &
+#$HOME/.config/polybar/launch.sh &

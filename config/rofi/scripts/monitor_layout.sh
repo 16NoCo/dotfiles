@@ -158,7 +158,8 @@ function gen_entries()
 }
 
 # Call menu
-SEL=$( gen_entries | rofi -theme ~/.config/rofi/themes/onedark -dmenu -p "🖵 Monitor Setup" -a 0 -no-custom  | awk '{print $1}' )
+#SEL=$( gen_entries | rofi -theme ~/.config/rofi/themes/onedark -dmenu -p "🖵 Monitor Setup" -a 0 -no-custom  | awk '{print $1}' )
+SEL=$( gen_entries | rofi -location 3 -dmenu -p "🖵 Monitor Setup" -no-custom  | awk '{print $1}' )
 
 # Call xrandr
 $( ${COMMANDS[$SEL]} )

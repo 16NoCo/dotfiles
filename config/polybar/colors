@@ -1,0 +1,13 @@
+# Set colors from .Xresources and use Nord as default
+
+#background     = ${xrdb:background_trans:#002B36}
+#background-alt = ${xrdb:background_alta :#073642}
+background     = ${xrdb:background      :#002B36}
+background-alt = ${xrdb:background_alt  :#073642}
+foreground     = ${xrdb:foreground      :#93A1A1}
+foreground-alt = ${xrdb:foreground_alt  :#93A1A1}
+#foreground-alt = ${xrdb:urgent  :#93A1A1}
+primary        = ${xrdb:primary         :#268BD2}
+#primary        = ${xrdb:urgent         :#268BD2}
+secondary      = ${xrdb:secondary       :#859900}
+urgent         = ${xrdb:urgent          :#DC322F}

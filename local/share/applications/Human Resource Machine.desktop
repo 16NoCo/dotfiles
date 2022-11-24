@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Human Resource Machine
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/375820
+Icon=steam_icon_375820
+Terminal=false
+Type=Application
+Categories=Game;
