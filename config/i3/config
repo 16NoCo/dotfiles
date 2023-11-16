@@ -278,21 +278,21 @@ bindsym $mod+KP_Add scratchpad show
 bindsym $mod+h [class="copyq"] scratchpad show
 # Rofi shortcuts
 # Rofi − Network
-bindsym $mod+F11 exec rofeh -s & $HOME/.config/rofi/scripts/networkmenu.py && rofeh -u
+bindsym $mod+F11 exec $HOME/.config/rofi/scripts/networkmenu.py
 # Rofi monitors
-bindsym $mod+m exec rofeh -s & $HOME/.config/rofi/scripts/monitor_layout.sh && rofeh -u
+bindsym $mod+m exec $HOME/.config/rofi/scripts/monitor_layout.sh
 # Rofi bluetooth
-bindsym $mod+Shift+K exec rofeh -s & $HOME/.config/rofi/scripts/rofi-bluetooth.sh && rofeh -u
+bindsym $mod+Shift+K exec $HOME/.config/rofi/scripts/rofi-bluetooth.sh
 # Rofi i3keybindings
-bindsym $mod+Shift+Q exec rofeh -s & $HOME/.config/rofi/scripts/i3keybindingsmenu.sh && rofeh -u
+bindsym $mod+Shift+Q exec $HOME/.config/rofi/scripts/i3keybindingsmenu.sh
 # Rofi switch audio input
-bindsym $mod+F5 exec rofeh -s & $HOME/.config/rofi/scripts/audio_move_source_output.py && rofeh -u
+bindsym $mod+F5 exec $HOME/.config/rofi/scripts/audio_move_source_output.py
 # Rofi switch audio output
-bindsym $mod+F6 exec rofeh -s & $HOME/.config/rofi/scripts/audio_move_sink_input.py && rofeh -u
+bindsym $mod+F6 exec $HOME/.config/rofi/scripts/audio_move_sink_input.py
 # Rofi mpd playlist
-bindsym $mod+j exec rofeh -s & $HOME/.config/rofi/scripts/mpd_songs.sh && rofeh -u
+bindsym $mod+j exec $HOME/.config/rofi/scripts/mpd_songs.sh
 # Rofi power menu
-bindsym $mod+Shift+Delete exec rofeh -s & $HOME/.config/rofi/scripts/powermenu.sh && rofeh -u
+bindsym $mod+Shift+Delete exec $HOME/.config/rofi/scripts/powermenu.sh
 # deadd notification center
 bindsym $mod+BackSpace exec kill -s USR1 $(pidof deadd-notification-center)
 
@@ -312,13 +312,13 @@ for_window [class="deepltranslator-nativefier-40862d"] move scratchpad
 for_window [class="deepltranslator-nativefier-40862d"] floating enable
 bindsym $mod+D [class="deepltranslator-nativefier-40862d"] scratchpad show
 # launch rofi/dmenu
-bindsym $mod+i exec rofeh -s & rofi -show run && rofeh -u
+bindsym $mod+i exec rofi -show run
 # focus urgent window
 bindsym $mod+v [urgent="latest"] focus
 #bindsym $mod+i exec "rofi -show run -lines 3 -eh 2 -width 100 -padding 600 -opacity \\"85\\" -bw 0 -font \\"System San Francisco Display 18\\" -color-normal \\"#00000000,$text-color,#00000000,#00000000,#9575cd\\" -color-window \\"$bg-color-alpha,$bg-color-alpha,$bg-color-alpha\\" -theme-str \\"#listview { border: none; padding: 15px 0 0 0;}\\""
 #bindsym $mod+i exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # Rofi applications
-bindsym $mod+b exec rofeh -s & rofi -show drun -location 1 -lines 10 && rofeh -u
+bindsym $mod+b exec rofi -show drun -location 1 -lines 10
 assign [class="discord"] $workspace8
 for_window [class="discord"] focus
 for_window [title="Ao"] floating enable
@@ -331,6 +331,8 @@ for_window [window_role="EventDialog" class="Thunderbird"] floating enable
 for_window [title="Event Tester"] floating enable
 for_window [class="copyq"] move scratchpad
 for_window [title="About Mozilla"] floating enable
+for_window [title="Sign in to Minecraft"] floating enable
+for_window [title="Welcome to Xbox"] floating enable
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ && sleep 0.02 && amixer -q -D pulse sset Master 1%+ #&& pkill -RTMIN+1 i3blocks

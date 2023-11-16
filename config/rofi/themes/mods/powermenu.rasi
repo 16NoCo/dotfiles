@@ -6,7 +6,8 @@ configuration {
     show-icons: false;
 }
 
-@theme "nord_top_noconf"
+@import "colors/nord"
+@import "nord_top_noconf"
 
 * {
     font: "RobotoMono Nerd Font Regular 46";

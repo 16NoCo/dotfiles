@@ -2,7 +2,7 @@ ncmpcpp_directory = ~/.ncmpcpp
 lyrics_directory = ~/.ncmpcpp/lyrics
 mpd_host = localhost
 mpd_port = 6660
-mpd_music_dir = /home/noe/Music/
+mpd_music_dir = ~/Music/
 
 ## Available values: spectrum, wave, wave_filled, ellipse.
 visualizer_type = spectrum

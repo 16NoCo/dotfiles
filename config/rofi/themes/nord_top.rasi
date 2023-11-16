@@ -8,4 +8,5 @@
 
 
 @import "nord_top_conf"
-@theme "nord_top_noconf"
+@import "colors/nord"
+@import "nord_top_noconf"

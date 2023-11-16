@@ -2,35 +2,34 @@
 
 configuration {
     show-icons: false;
-    /*font: "FuraCode Nerd Font 9";
-    yoffset: 28;*/
     location: 2;
     cycle: false;
 }
 
+@import "colors/nord"
 @import "nord_top_noconf"
 
 
 * {
     /*nord0: #2e3440;
-	nord1: #3b4252;
-	nord2: #434c5e;
-	nord3: #4c566a;
+    nord1: #3b4252;
+    nord2: #434c5e;
+    nord3: #4c566a;
 
-	nord4: #d8dee9;
-	nord5: #e5e9f0;
-	nord6: #eceff4;
+    nord4: #d8dee9;
+    nord5: #e5e9f0;
+    nord6: #eceff4;
 
-	nord7: #8fbcbb;
-	nord8: #88c0d0;
-	nord9: #81a1c1;
-	nord10: #5e81ac;
-	nord11: #bf616a;
+    nord7: #8fbcbb;
+    nord8: #88c0d0;
+    nord9: #81a1c1;
+    nord10: #5e81ac;
+    nord11: #bf616a;
 
-	nord12: #d08770;
-	nord13: #ebcb8b;
-	nord14: #a3be8c;
-	nord15: #b48ead;*/
+    nord12: #d08770;
+    nord13: #ebcb8b;
+    nord14: #a3be8c;
+    nord15: #b48ead;*/
 
     transparent: rgba(46,52,64,0);
     highlight:     underline bold #eceff4;
@@ -71,14 +70,23 @@ configuration {
 }
 
 #window {
-	/*orientation: horizontal;*/
-	border: 0 1px 1px 1px;
-    border-radius: 0 0 6px 6px;
+    /*orientation: horizontal;*/
     /*border-color: @nord9;*/
-	children: [ coverdiv, main ];
-    margin: 0;
-    background-image: url("~/.config/rofi/scripts/mpd_songs/cover.png", both);
-    background-image: url("/tmp/rofi-mpd_cover.png", both);
+    children: [bar, dummy, button-bg, mainbox];
+    //margin: 0;
+    //background-image: url("~/.config/rofi/scripts/mpd_songs/cover.png", both);
+}
+
+mainbox {
+    children: [submain];
+}
+
+submain {
+    children: [ coverdiv, main ];
+    border: 0 1px 1px 1px;
+    border-radius: 0 0 6px 6px;
+    border-color: @foreground;
+    orientation: horizontal;
 }
 
 #main {
@@ -92,6 +100,7 @@ configuration {
     border-color: @bg;
     children: [ coverbox ];
     expand: false;
+    background-image: url("/tmp/rofi-mpd_cover.png", both);
 }
 
 #coverbox {
@@ -99,8 +108,8 @@ configuration {
     border: 0 12px 0 12px;
     border-color: #2e3440aa;
     border-color: @bg;
-	//expand: false;
-	width: 244px;
+    //expand: false;
+    width: 244px;
 }
 
 #inputbar {
@@ -118,7 +127,7 @@ configuration {
     /*border-radius: 0;*/
     border: 1px 0 0 1px;
     /*padding: 8px;
-	background-color: rgba(46,52,64,0.9);
+    background-color: rgba(46,52,64,0.9);
     background-color: @bg-alt;
     //fixed-height: 0;
     //spacing: 0px;

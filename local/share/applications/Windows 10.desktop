@@ -6,3 +6,4 @@ Comment=Starts the VirtualBox machine Windows 10
 Type=Application
 Exec=/usr/lib/virtualbox/VirtualBoxVM --comment "Windows 10" --startvm "{d702145d-9c37-4734-a0b6-95b44bc3d20d}"
 Icon=/usr/share/icons/Moka/256x256/places/distributor-logo-windows.png
+Icon=distributor-logo-windows

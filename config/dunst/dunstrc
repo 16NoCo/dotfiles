@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-6+34"
+    geometry = "316x5-2+2"
     corner_radius = 6
 
     # Show how many messages are currently hidden (because of geometry).
@@ -52,17 +52,18 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 4
+    gap_size = 10
 
     # Padding between text and separator.
-    padding = 8
+    padding = 4
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 11
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 4
 
     # Defines color of the frame around the notification window.
 #    frame_color = "#00666666"
@@ -87,7 +88,7 @@
 
     ### Text ###
 
-    font = Monospace 8
+    font = Minecraft 14
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -127,7 +128,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    #format = "<b><span foreground='#fcfc00'>%s</span></b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -164,7 +165,9 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    //max_icon_size = 42
+    max_icon_size = 32
+    min_icon_size = 32
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Papirus/32x32/status/:/usr/share/icons/Papirus/32x32/devices/:/usr/share/icons/Papirus/32x32/apps/:/usr/share/icons/Papirus/symbolic/actions/:/usr/share/icons/Papirus/24x24/panel/
@@ -242,7 +245,7 @@
     history = ctrl+dollar
 
     # Context menu.
-    context = ctrl+shift+period
+    context = ctrl+shift+f
 
 #[urgency_low]
 #    # IMPORTANT: colors have to be defined in quotation marks.
@@ -332,19 +335,35 @@
 [urgency_low]
     msg_urgency = low
     #background = "#2e3440aa"
-    background = "#3b4252"
-    foreground = "#d8dee9"
-    frame_color = "#81a1c1"
+    background = "#212121"
+    foreground = "#fcfcfc"
+    frame_color = "#555555"
+    #format = "<b><span foreground='#fcfc00'>%s</span></b>\n%b"
 
 [urgency_normal]
     msg_urgency = normal
-    background = "#81a1c1"
-    foreground = "#2e3440"
-    frame_color = "#81a1c1"
+    background = "#dedede"
+    foreground = "#000000"
+    frame_color = "#aaaaaa"
+    #format = "<b><span foreground='#4f004f'>%s</span></b>\n%b"
     
 [urgency_critical]
     msg_urgency = critical
     background = "#bf616a"
     foreground = "#2e3440"
     frame_color = "#ebcb8b"
+    #format = "<b><span foreground='#fcfc00'>%s</span></b>\n%b"
+
+[test1]
+    msg_urgency = normal
+    format = "<b><span foreground='#4f004f'>%s</span></b>\n%b"
+
+[test2]
+    msg_urgency = low
+    format = "<b><span foreground='#fcfc00'>%s</span></b>\n%b"
+
+[test3]
+    msg_urgency = critical
+    format = "<b><span foreground='#fcfc00'>%s</span></b>\n%b"
+
 # vim: ft=cfg

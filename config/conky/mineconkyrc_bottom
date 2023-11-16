@@ -1,0 +1,57 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = {
+	alignment = 'bottom_middle',
+	--xinerama_head = 1,
+	--display = 0,
+	background = true,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = white,
+	default_outline_color = white,
+	default_shade_color = white,
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = true,
+	draw_shades = false,
+	use_xft = true,
+	font = 'Minecraft:size=15',
+	gap_x = 840,
+	gap_y = 46,
+	--minimum_size = 5 5,
+	net_avg_samples = 2,
+	double_buffer = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	maximum_width=360,
+	minimum_width=360,
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'override',
+	own_window_hints = undecorated,below,sticky,skip_taskbar,skip_pager,
+	stippled_borders = 0,
+	update_interval = 1.0,
+	uppercase = false,
+	--use_spacer = false,
+	show_graph_scale = false,
+	show_graph_range = false,
+	own_window_transparent = true,
+	own_window_colour = '333333',
+	color1 = '#dddddd',
+	color2 = '#222222',
+	default_color = '#dddddd',
+	default_outline_color = '#09100c',
+	--draw_outline = true
+	--own_window_argb_visual = true,
+	--own_window_argb_value = 140,
+	lua_load = "~/.config/conky/functions.lua",
+	border_inner_margin = 0
+}
+
+conky.text = [[${voffset -5}\
+${color #7efc20}$alignc${time %H:%M}${voffset -8}
+${lua_parse bat_bar $battery_percent}\
+${lua_parse bat_warn $battery_short}\
+${voffset -9}
+]]

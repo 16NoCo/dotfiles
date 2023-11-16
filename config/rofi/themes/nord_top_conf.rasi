@@ -9,7 +9,7 @@
 
 configuration {
     location:   2;
-    yoffset: 23;
+//    yoffset: 23;
 
 	font: "Envy Code R 9";
 	//line-margin: 10;

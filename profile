@@ -34,3 +34,5 @@ if [ -d "$HOME/.adb-fastboot/platform-tools" ] ; then
 fi
 
 export PATH=~/.npm-global/bin:$PATH
+export MPD_PORT=6660
+export MPD_HOST=localhost

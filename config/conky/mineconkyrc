@@ -1,0 +1,77 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = {
+	alignment = 'bottom_middle',
+	background = true,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = white,
+	default_outline_color = white,
+	default_shade_color = white,
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+	use_xft = true,
+	font = 'Minecraft:size=15',
+	gap_x = 0,
+	gap_y = 48,
+	--minimum_size = 5 5,
+	net_avg_samples = 2,
+	double_buffer = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'override',
+	own_window_hints = undecorated,below,sticky,skip_taskbar,skip_pager,
+	stippled_borders = 0,
+	update_interval = 1.0,
+	uppercase = false,
+	use_spacer = falsene,
+	show_graph_scale = false,
+	show_graph_range = false,
+	--own_window_transparent = true,
+	own_window_colour = '333333',
+	color1 = '#dddddd',
+	color2 = '#222222',
+	default_color = '#dddddd',
+	default_outline_color = '#222222',
+	--draw_outline = true
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+	border_inner_margin = 0
+}
+
+conky.text = [[${voffset -5}\
+${time %H:%M %A, %d %B} ${battery BAT0}
+${voffset -6}\
+$acpitemp${font Ubuntu Mono:size=18}°${font}C CPU: ${cpu cpu0}%
+# Network interfaces
+${voffset -6}\
+W: ${if_up wlp58s0}${if_match "$wireless_essid"=="off/any"}Not Connected$else$wireless_essid ${addr wlp58s0}$endif${else}OFF$endif
+${voffset -6}\
+E: ${if_up wlp58s0}${if_match "${addr enp57s0f1}"=="No Address"}Not Connected$else${addr enp57s0f1}$endif${else}OFF$endif
+${voffset -6}\
+B: 
+${voffset -6}\
+
+${voffset -6}\
+XYZ: 50.817 / 100.000 / 4.337
+# Display the brightness. Keyboard brightness still to be implemented.
+${voffset -6}\
+Client Light: ${exec echo $((`cat /sys/class/backlight/intel_backlight/brightness`/4000))} (${exec echo $((`cat /sys/class/backlight/intel_backlight/brightness`/4000))} screen, 0 keyboard)
+${voffset -6}\
+Biome: office
+${voffset -6}\
+Sounds: ${exec pactl list sink-inputs | grep "Corked: no" -c}/${exec pactl list clients | grep "^Client" -c}
+${voffset -6}\
+
+${voffset -6}\
+Debug: Pie [shift]: hidden CPU + Mem [alt]: hidden
+${voffset -6}\
+For help: press mod + shift + ?\
+${voffset -11}
+]]
+

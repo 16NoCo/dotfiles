@@ -1,15 +1,40 @@
 @import "nord_center.rasi"
 
+window {
+    children: [ button-bg, mainbox ];
+}
+
+mainbox {
+    padding: 55% calc( 40% + 16px );
+}
+
 inputbar, listview {
-    border-color: @nord11;
+    border-color: @attention;
+}
+
+listview {
+    lines: 1;
+}
+
+element {
+    orientation: vertical;
+}
+
+element-icon {
+    horizontal-align: 0.5;
+    size: 28px;
+}
+
+element-text {
+    horizontal-align: 0.5;
 }
 
 element.selected.urgent {
-    background-color: @nord11;
+    background-color: @attention;
     text-color: @bg;
 }
 
 element.selected.active {
-    background-color: @nord14;
+    background-color: @valid;
     text-color: @bg;
 }

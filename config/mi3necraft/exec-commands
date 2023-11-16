@@ -1,0 +1,17 @@
+#!/bin/bash
+
+redshift -l 50.5:4.5 -t 4000:3000 &
+feh --bg-fill ~/.config/mi3necraft/resources/wallpaper.png &
+$HOME/.config/mi3necraft/xmods.sh
+picom &
+polybar --reload -c ~/.config/polybar/minecraft inventory &
+#sleep 2 && while read event; do if [ "$LAST_CHANGE" -lt `date +%s` ]; then .config/mi3necraft/conky_start.sh; fi; LAST_CHANGE=$(date +%s); done < <(i3subscribe output) &
+i3subscribe output | while read event; do if [ "$LAST_CHANGE" -lt `date +%s` ]; then .config/mi3necraft/conky_start.sh; fi; LAST_CHANGE=$(date +%s); done &
+conky -c ~/.config/conky/mineconkyrc_left &
+conky -c ~/.config/conky/mineconkyrc_right &
+conky -c ~/.config/conky/mineconkyrc_bottom &
+#xss-lock -- i3lock-fancy &
+xdotool key Num_Lock
+mpd &
+mpDris2 &
+copyq &

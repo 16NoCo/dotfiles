@@ -4,7 +4,9 @@ rofi_command="rofi -theme themes/prompt"
 
 ### Options ###
 yes_text="Confirm"
+yes_icon="forward"
 no_text="Cancel"
+no_icon="back"
 query="Are you sure?"
 # Parse the args
 if [[ $# -eq 0 ]]; then
@@ -44,9 +46,9 @@ else
     done
 fi
 # Variable passed to rofi
-options="$yes_text\n$no_text"
+options="$no_text\0icon\x1f$no_icon\n$yes_text\0icon\x1f$yes_icon"
 
-chosen="$(echo -e "$options" | $rofi_command -p "$query" -dmenu -a 0 -u 1 -selected-row 1 -i)"
+chosen="$(echo -e "$options" | $rofi_command -p "$query" -dmenu -a 1 -u 0 -selected-row 0 -i)"
 case $chosen in
     $yes_text)
         eval "$yes_command"

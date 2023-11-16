@@ -1,0 +1,115 @@
+configuration {
+    location: 0;
+    font: "Minecraft 15";
+    display-drun: "Search Apps";
+    drun-display-format: "{name}\n<span color='#5e47ff'>{generic}</span>";
+    drun-display-format: "{name}\n<span>{generic}</span>";
+    eh: 2;
+    icon-theme: "Minecons";
+}
+* {
+    background-color: transparent;
+}
+window {
+    width: 1920px;
+    height: 1080px;
+    background-color: #000a;
+    padding: 404px 765px;
+    padding: 404px 765px 404px 515px;
+}
+mainbox {
+    padding: 6px 16px;
+    padding: 6px 16px 6px 0;
+    //width: 390px;
+    //height: 272px;
+    background-image: url("~/.config/rofi/themes/assets/tab_item_search_padding.png");
+    children: [inputbar, mainview];
+}
+prompt {
+    margin: 0 18px 0 0;
+    margin: 0 18px 0 266px;
+    color: #3f3f3f;
+}
+entry {
+    color: #fcfcfc;
+}
+mainview {
+    orientation: horizontal;
+    children: [listview, bars];
+}
+bars {
+    //background-color: #ff000088;
+    width: 1px;
+    margin: 4px 0px 10px -23px;
+    expand: false;
+    children: [vert, dashes, vert];
+    orientation: horizontal;
+}
+vert {
+    width: 2px;
+    expand: false;
+    background-color: green;
+    background-color: #8b8b8baa;
+}
+dashes {
+    margin: 4px 0 2px 0;
+    children: [dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash, dash];
+}
+dash {
+    background-color: #8b8b8b;
+    //background-color: #0f0;
+    margin: 0px 0 0 0;
+    padding: 0;
+}
+listview {
+    columns: 9;
+    scrollbar: true;
+    scrollbar-width: 24px;
+    padding: 4px 0 17px 1px;
+    padding: 4px 0 17px 268px;
+    fixed-columns: true;
+    margin: 0 -3px 0 0;
+}
+scrollbar {
+    handle-width: 24px;
+    handle-color: #c6c6c6;
+    margin: 0 0 0 8px;
+}
+element {
+    margin: 0px 2px -26px -250px;
+    children: [tooltip, element-icon];
+}
+element.selected {
+    background-color: #ffffffaa;
+    background-color: transparent;
+}
+tooltip {
+    border: 2px;
+    //border-radius: 2px;
+    //margin: 0 0 -17px 0;
+    children: [element-text];
+}
+tooltip.selected {
+    border-color: #000d;
+}
+element-text {
+    enabled: true;
+    width: 260px;
+    color: transparent;
+    padding: 0 4px 4px 4px;
+}
+element-text.selected {
+    color: #fcfcfc;
+    background-color: #000d;
+    border: 2px;
+    border-color: #290560;
+}
+element-icon {
+    size: 32;
+    margin: 0 0 28px 0;
+}
+element-icon.selected {
+    background-color: #ffffffaa;
+}
+
+/* vim:ft=css

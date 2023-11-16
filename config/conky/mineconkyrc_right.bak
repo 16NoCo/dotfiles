@@ -1,0 +1,56 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = {
+	alignment = 'top_right',
+	--xinerama_head = 2,
+	background = true,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = white,
+	default_outline_color = white,
+	default_shade_color = white,
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+	use_xft = true,
+	font = 'Minecraft:size=15',
+	gap_x = 1684,
+	gap_y = 4,
+	--minimum_size = 5 5,
+	net_avg_samples = 2,
+	double_buffer = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'override',
+	own_window_hints = undecorated,below,sticky,skip_taskbar,skip_pager,
+	stippled_borders = 0,
+	update_interval = 1.0,
+	uppercase = false,
+	use_spacer = falsene,
+	show_graph_scale = false,
+	show_graph_range = false,
+	--own_window_transparent = true,
+	own_window_colour = '333333',
+	color1 = '#dddddd',
+	color2 = '#222222',
+	default_color = '#dddddd',
+	default_outline_color = '#222222',
+	--draw_outline = true
+	own_window_argb_visual = true,
+	own_window_argb_value = 140,
+	border_inner_margin = 0
+}
+
+conky.text = [[
+#${alignr}Volume: \
+#$pa_sink_volume
+${alignr}Mem: $memperc% $mem/$memmax
+
+${alignr}CPU: ${exec cat /proc/cpuinfo | grep "model name" -c}x${exec cat /proc/cpuinfo | grep "model name" | cut -d ":" -f2 | head -n 1}
+
+${alignr}Display: ${exec xrandr | grep "+ " | grep -o "[0-9]*x[0-9]*"}
+]]

@@ -15,4 +15,4 @@ configuration {
 listview {
     scrollbar:  false;
 }
-@theme "~/.config/rofi/themes/nord_top_noconf.rasi"
+//@theme "~/.config/rofi/themes/nord_top_noconf.rasi"

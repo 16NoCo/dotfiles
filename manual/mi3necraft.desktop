@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=mi3necraft
+Comment=improved dynamic tiling window manager
+Exec=i3 -c HOME/.config/mi3necraft/config
+TryExec=i3
+Type=Application
+X-LightDM-DesktopName=mi3necraft
+DesktopNames=mi3necraft
+Keywords=tiling;wm;windowmanager;window;manager;

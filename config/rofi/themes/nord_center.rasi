@@ -2,10 +2,18 @@
 
 configuration {
     location: 0;
-    yoffset: 0;
 }
 
-@theme "nord_top_noconf"
+@import "colors/nord"
+@import "nord_top_noconf"
+
+window {
+    children: [bar, button-bg, mainbox];
+}
+
+mainbox {
+    padding: 35% calc( 35% + 16px ) 60%;
+}
 
 inputbar {
     border: 1px;

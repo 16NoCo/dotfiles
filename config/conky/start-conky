@@ -1,4 +1,4 @@
 #!/bin/sh
-sleep 20
-conky -d -c ~/.conky/conkyrc
+sleep 2
+conky -d -c ~/.config/conky/conkyrc
 exit

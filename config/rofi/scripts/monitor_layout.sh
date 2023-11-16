@@ -15,13 +15,15 @@ function gen_xrandr_only()
 {
     selected=$1
 
-    cmd="xrandr --output ${MONITORS[$selected]} --auto "
+    ACTIVE_M=( $( ${XRANDR} --listactivemonitors | awk '/\+/ { print $4 }' ) )
 
-    for entry in $(seq 0 $((${NUM_MONITORS}-1)))
+    cmd="xrandr --output ${ACTIVE_M[$selected]} --auto "
+
+    for entry in $(seq 0 $((${#ACTIVE_M[@]}-1)))
     do
         if [ $selected != $entry ]
         then
-            cmd="$cmd --output ${MONITORS[$entry]} --off"
+            cmd="$cmd --output ${ACTIVE_M[$entry]} --off"
         fi
     done
 
@@ -93,10 +95,12 @@ done
 t2=$(xrandr | grep " connected" | grep -v "primary" | sed -E 's/.+\ ([0-9]+x[0-9]+\+[0-9]+\+[0-9]+).+/\1/g')
 if [[ "$t2" == *"+"* ]]; then
     t1=$(xrandr | grep " connected" | grep "primary" | sed -E 's/.+\ ([0-9]+x[0-9]+\+[0-9]+\+[0-9]+).+/\1/g')
+    ## Width and height of monitors 1 and 2
     w1=$(echo $t1 | cut -d + -f 1 | cut -d x -f 1)
     h1=$(echo $t1 | cut -d + -f 1 | cut -d x -f 2)
     w2=$(echo $t2 | cut -d + -f 1 | cut -d x -f 1)
     h2=$(echo $t2 | cut -d + -f 1 | cut -d x -f 2)
+    ## x and y offsets of monitors 1 and 2
     x1=$(echo $t1 | cut -d + -f 2)
     y1=$(echo $t1 | cut -d + -f 3)
     x2=$(echo $t2 | cut -d + -f 2)
@@ -104,8 +108,10 @@ if [[ "$t2" == *"+"* ]]; then
     #echo "$w1 $h1 : $x1 $y1"
     #echo "$w2 $h2 : $x2 $y2"
 
+    ## Small and Great Moves size (in pixels)
     sm=50
     gm=300
+    ## If monitors are side by side (not above/below)
     if [[ $x2 == $w1 ]] || [[ $x1 == $w2 ]]; then
         dy=$((y2-y1))
         ms1="${x1}x$((0<(sm-dy) ? (sm-dy) : 0))"
@@ -114,10 +120,10 @@ if [[ "$t2" == *"+"* ]]; then
         mg2="${x2}x$((0<-(gm-dy) ? -(gm-dy) : 0))"
         mm="up"
 
-        ps1="${x1}x$((0<(sm+dy) ? (sm+dy) : 0))"
-        ps2="${x2}x$((0<-(sm+dy) ? -(sm+dy) : 0))"
-        pg1="${x1}x$((0<(gm+dy) ? (gm+dy) : 0))"
-        pg2="${x2}x$((0<-(gm+dy) ? -(gm+dy) : 0))"
+        ps1="${x1}x$((0<-(sm+dy) ? -(sm+dy) : 0))"
+        ps2="${x2}x$((0<(sm+dy) ? (sm+dy) : 0))"
+        pg1="${x1}x$((0<-(gm+dy) ? -(gm+dy) : 0))"
+        pg2="${x2}x$((0<(gm+dy) ? (gm+dy) : 0))"
         pm="down"
         echo "on side: $ms1, $ms2"
     elif [[ $y2 == $h1 ]]; then

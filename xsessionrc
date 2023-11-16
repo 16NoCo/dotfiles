@@ -1,0 +1,1 @@
+[[ -f ~/.Xresources ]] && xrdb -DEXTRA_RESOURCES_FILE="<$HOME/.config/colors/nord>" -merge ~/.Xresources

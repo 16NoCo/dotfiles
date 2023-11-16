@@ -6,6 +6,10 @@ highlight NbSp ctermbg=lightgray guibg=lightred
 
 vmap <C-c> "+y
 
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 "set number
 "syntax on
 "set shiftwidth=4

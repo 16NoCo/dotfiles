@@ -11,5 +11,7 @@
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [include]
-	path = ~/.gitconfig_local
+        path = ~/.gitconfig_local
 
+[alias]
+	root = rev-parse --show-toplevel

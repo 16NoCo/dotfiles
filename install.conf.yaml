@@ -25,8 +25,14 @@
         path: local/share/*
     ~/.bashrc:
     ~/.gitconfig:
+    ~/.initrc:
     ~/.lesskey:
+    ~/.p10k.zsh:
     ~/.profile:
+    ~/.selected_editor:
     ~/.vimrc:
     ~/.vimrc_bepo:
+    ~/.xprofile:
+    ~/.xsessionrc:
+    ~/.Xresources:
     ~/.zshrc:

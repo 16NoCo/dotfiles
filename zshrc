@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/noe/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,9 +77,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime)
+plugins=(git sublime vi-mode)
+
+# vi-mode functionalities
+VI_MODE_SET_CURSOR=true
+#export KEYTIMEOUT=1
+
+export fpath=(~/.config/zsh/completion $fpath)
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/custom/bindings.zsh
 
 # User configuration
 
@@ -120,14 +127,17 @@ alias :q='exit'
 alias q='exit'
 alias lessh='LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s" less -M '
 alias ncmpcpp='ncmpcpp -c $HOME/.config/ncmpcpp/config'
+alias nse='notify-send "Command line" "Command has ended" -i terminal'
 
 source $HOME/.bash/functions
 
 export MPD_PORT=6660
 export MPD_HOST=localhost
 
-export fpath=(~/.config/zsh/completion $fpath)
-
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
+
+ssh-add ~/.ssh/github 2&> /dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
