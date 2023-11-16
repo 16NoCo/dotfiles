@@ -16,7 +16,7 @@ conky.config = {
 	draw_shades = false,
 	use_xft = true,
 	font = 'Minecraft:size=15',
-	gap_x = 840,
+	gap_x = 0,
 	gap_y = 46,
 	--minimum_size = 5 5,
 	net_avg_samples = 2,
