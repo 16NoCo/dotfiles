@@ -5,10 +5,12 @@ feh --bg-fill ~/.config/mi3necraft/resources/wallpaper.png &
 $HOME/.config/mi3necraft/xmods.sh
 picom &
 polybar --reload -c ~/.config/polybar/minecraft inventory &
+#~/.config/mi3necraft/conky_start.sh
+LAST_CHANGE=0
 i3subscribe output | while read event; do if [ "$LAST_CHANGE" -lt `date +%s` ]; then .config/mi3necraft/conky_start.sh; fi; LAST_CHANGE=$(date +%s); done &
-conky -c /tmp/mineconkyrc_left &
-conky -c /tmp/mineconkyrc_right &
-conky -c /tmp/mineconkyrc_bottom &
+sleep 1 && conky -c /tmp/mineconkyrc_left &
+sleep 1 && conky -c /tmp/mineconkyrc_right &
+sleep 1 && conky -c /tmp/mineconkyrc_bottom &
 #xss-lock -- i3lock-fancy &
 xdotool key Num_Lock
 mpd &

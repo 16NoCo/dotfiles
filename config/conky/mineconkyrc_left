@@ -52,7 +52,16 @@ $acpitemp${font Ubuntu Mono:size=18}°${font}C CPU: ${cpu cpu0}%
 ${voffset -6}\
 W: ${if_up wlp58s0}${if_match "$wireless_essid"=="off/any"}Not Connected$else$wireless_essid ${addr wlp58s0}$endif${else}OFF$endif
 ${voffset -6}\
-E: ${if_up wlp58s0}${if_match "${addr enp57s0f1}"=="No Address"}Not Connected$else${addr enp57s0f1}$endif${else}OFF$endif
+E: ${if_up enp57s0f1}\
+${if_match "${addr enp57s0f1}"=="No Address"}\
+${if_up enp0s20f0u3}\
+${if_match "${addr enp0s20f0u3}"=="No Address"}Not Connected${else}USB ${addr enp0s20f0u3}$endif\
+${else}Not Connected\
+$endif\
+${else}ethernet ${addr enp57s0f1}\
+$endif\
+${else}OFF$endif\
+
 ${voffset -6}\
 B: 
 ${voffset -6}\

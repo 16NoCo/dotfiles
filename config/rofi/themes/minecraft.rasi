@@ -1,0 +1,12 @@
+/**
+ * Nordic rofi theme
+ * Adapted by undiabler <undiabler@gmail.com>
+ *
+ * Nord Color palette imported from https://www.nordtheme.com/
+ *
+ */
+
+
+@import "minecraft_conf"
+@import "colors/nord"
+@import "minecraft_noconf"
