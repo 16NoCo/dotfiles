@@ -1,7 +1,19 @@
 config/ncmpcpp/scripts/last_played
+# ranger/bookmarks gets overwritten (cannot symlink)
+config/ranger/bookmarks
 *.log
 **/log
 **/mpd/mpdstate
 **/mpd/pid
 **/mpd/state
 vim/plugged/*
+
+# Symlinks to .dotfiles_local
+config/fish/fish_variables
+config/naivecalendar/caldav_user.json
+config/ncmpcpp/lyrics
+config/ncmpcpp/scripts_data
+config/ranger/history
+config/ranger/tagged
+local/share/albert/org.albert.extension.python/modules/subl.py
+vim/.netrwhist
