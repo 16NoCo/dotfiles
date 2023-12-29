@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=minecraft
+Description=display the Minecraft World loading screen
+Comment=created By
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/minecraft
+ScriptFile=/usr/share/plymouth/themes/minecraft/minecraft.script
